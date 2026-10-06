@@ -102,8 +102,8 @@ def main():
                           'Private-workout measurements are displayed only when publicly reported. Missing results are never zero.',
                           'Scouting excerpts are short pre-draft source quotations; grades from different years are not normalized.']}
     (PROJECT / 'local' / 'data' / 'profile-index.json').write_text(json.dumps({'coverage': coverage, 'profiles': index}, ensure_ascii=False), encoding='utf-8')
-    (PROJECT / 'local' / 'data' / 'coverage.json').write_text(json.dumps(coverage, ensure_ascii=False, indent=2), encoding='utf-8')
-    (PROJECT / 'profile-coverage.json').write_text(json.dumps(coverage, ensure_ascii=False, indent=2), encoding='utf-8')
+    (PROJECT / 'local' / 'data' / 'coverage.json').write_text(json.dumps(coverage, ensure_ascii=False, indent=2), encoding='utf-8', newline='\n')
+    (PROJECT / 'profile-coverage.json').write_text(json.dumps(coverage, ensure_ascii=False, indent=2), encoding='utf-8', newline='\n')
     print(json.dumps(coverage, indent=2))
 
 

@@ -1,5 +1,5 @@
 * text=auto eol=lf
-*.json -text
+*.json text eol=lf
 *.zip binary
 *.png binary
 *.woff2 binary

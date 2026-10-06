@@ -15,7 +15,8 @@ shutil.copy2(root/'nfl-drafts-2017-2026.csv',root/'local'/'nfl-drafts-2017-2026.
 for asset in ('profile-ui.js', 'profile-ui.css'):
     if (root/asset).exists():
         shutil.copy2(root/asset,root/'local'/asset)
-shutil.copy2(root/'measurement-definitions.json', root/'local'/'data'/'measurement-definitions.json')
+(root/'local'/'data'/'measurement-definitions.json').write_text(
+    (root/'measurement-definitions.json').read_text(encoding='utf-8'), encoding='utf-8', newline='\n')
 profiles = sorted((root/'local'/'data'/'profiles').glob('*.json'))
 assert len(profiles) == 2569
 with ZipFile(root/'local'/'player-profiles-2017-2026.zip', 'w', compression=ZIP_DEFLATED) as archive:

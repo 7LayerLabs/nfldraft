@@ -116,7 +116,7 @@ Enrich every one of the 2,569 drafted players from 2017–2026. Each player open
 - [x] Verify WR 4.34, WR hand size, OT arms, missing splits, small samples, Escape/focus, themes and 320px mobile.
 - [x] Include definitions/distributions in the ZIP; validate all 239 distributions and download integrity.
 - [x] Document fresh-clone localhost setup, collection/build commands, source handling and coverage.
-- [ ] Initialize an isolated project repository and push app/data to https://github.com/7LayerLabs/nfldraft.git; verify remote commit.
+- [x] Initialize an isolated project repository and push app/data to https://github.com/7LayerLabs/nfldraft.git; verify remote commit.
 
 ### Profile and measurement review
 - All 2,569 selections have profiles and source-labelled measurements. 2,527 have brief sourced scouting excerpts; 42 missing reports remain labelled.
@@ -127,3 +127,4 @@ Enrich every one of the 2,569 drafted players from 2017–2026. Each player open
 - Measurement dialogs show definitions, averages/medians/quartiles, sample sizes, midpoint percentiles and top-percent bands. Larger hands/arms rank by size rather than football ability; cross-event estimates are identified.
 - Removing smooth scrolling fixed click-position races in archive/profile navigation. Comparisons describe drafted players in this archive rather than all NFL players.
 - Raw full narratives, tokens, server logs and personal cache paths are excluded from public data/Git. Public-source bootstrap uses the current user's external cache.
+- GitHub delivery: main branch pushed successfully to 7LayerLabs/nfldraft; repository contains only this project, with generated data and local assets ready to serve.
