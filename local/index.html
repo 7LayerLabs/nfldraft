@@ -151,6 +151,7 @@
     const sections = new Map();
     const states = new Map();
     const yearButtons = new Map();
+    const positionOrder = ['QB','RB','FB','WR','TE','OT','OG','C','DE','DT','LB','CB','S','K','P','LS'];
     const teams = {
       'Arizona Cardinals':'ari','Atlanta Falcons':'atl','Baltimore Ravens':'bal','Buffalo Bills':'buf','Carolina Panthers':'car','Chicago Bears':'chi','Cincinnati Bengals':'cin','Cleveland Browns':'cle','Dallas Cowboys':'dal','Denver Broncos':'den','Detroit Lions':'det','Green Bay Packers':'gb','Houston Texans':'hou','Indianapolis Colts':'ind','Jacksonville Jaguars':'jax','Kansas City Chiefs':'kc','Los Angeles Chargers':'lac','Los Angeles Rams':'lar','Las Vegas Raiders':'lv','Oakland Raiders':'lv','Miami Dolphins':'mia','Minnesota Vikings':'min','New England Patriots':'ne','New Orleans Saints':'no','New York Giants':'nyg','New York Jets':'nyj','Philadelphia Eagles':'phi','Pittsburgh Steelers':'pit','Seattle Seahawks':'sea','San Francisco 49ers':'sf','Tampa Bay Buccaneers':'tb','Tennessee Titans':'ten','Washington Redskins':'wsh','Washington Football Team':'wsh','Washington Commanders':'wsh'
     };
@@ -218,7 +219,10 @@
       const teamSelect=node('select','filter-select',null,toolbar); teamSelect.setAttribute('aria-label','Filter '+year+' by team');
       option(teamSelect,'','All teams'); [...new Set(data[year].map(r=>r[2]))].sort().forEach(team=>option(teamSelect,team,team));
       const positionSelect=node('select','filter-select',null,toolbar); positionSelect.setAttribute('aria-label','Filter '+year+' by position');
-      option(positionSelect,'','All positions'); [...new Set(data[year].map(r=>r[5]))].sort().forEach(pos=>option(positionSelect,pos,pos));
+      const availablePositions = [...new Set(data[year].map(r=>r[5]))];
+      const orderedPositions = positionOrder.filter(pos=>availablePositions.includes(pos));
+      const additionalPositions = availablePositions.filter(pos=>!positionOrder.includes(pos)).sort();
+      option(positionSelect,'','All positions'); [...orderedPositions,...additionalPositions].forEach(pos=>option(positionSelect,pos,pos==='OG'?'G':pos));
       state.clear=node('button','clear-button','Clear filters',toolbar); state.clear.type='button'; state.clear.hidden=true;
       const roundToolbar=node('div','round-toolbar',null,content);
       const roundList=node('div','round-list',null,roundToolbar); roundList.setAttribute('role','group'); roundList.setAttribute('aria-label','Filter '+year+' by round');

@@ -128,3 +128,9 @@ Enrich every one of the 2,569 drafted players from 2017–2026. Each player open
 - Removing smooth scrolling fixed click-position races in archive/profile navigation. Comparisons describe drafted players in this archive rather than all NFL players.
 - Raw full narratives, tokens, server logs and personal cache paths are excluded from public data/Git. Public-source bootstrap uses the current user's external cache.
 - GitHub delivery: main branch pushed successfully to 7LayerLabs/nfldraft; repository contains only this project, with generated data and local assets ready to serve.
+
+## Position dropdown order
+- [x] Apply Derek's order: QB, RB, FB, WR, TE, OT, G, C, DE, DT, LB, CB, S; display the existing OG filter as G.
+- [x] Rebuild localhost and verify all ten years' ordered options and 2026 guard filtering (17 guards); retain additional positions after the requested sequence.
+- [x] Push the update to GitHub and verify the remote commit.
+- Review: G is the visible guard option and retains the original OG data match; no draft records or profile positions were changed. Browser checks passed for every year, including years with no drafted fullback.
