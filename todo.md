@@ -156,3 +156,53 @@ Enrich every one of the 2,569 drafted players from 2017–2026. Each player open
 - All 2,569 profiles and dated CSV rows match the roster snapshot; the complete ZIP includes current-teams.json. Existing identities, college statistics and 57,440 workout observations remain validated.
 - Browser checks passed every year's complete counts and nonempty seventh column, sourced retirement/free-agent labels, profile current status, filters/search and mobile horizontal containment. Asset content fingerprints prevent existing tabs from retaining old profile scripts.
 - Public reports and refresh instructions are included. Private source responses and anonymous tokens stay outside the repository. Final app/data pushed to 7LayerLabs/nfldraft main branch.
+
+## NFL career stats and position career arcs
+### Problem statement
+Derek wants every drafted player's NFL career statistics so far, organised by career year (Year 1 = draft season), and a position-by-position view that shows how production and usage develop from Year 1 onward. The analysis must answer when each position typically comes into its own (for example, whether a rookie WR breakout is realistic or whether Year 3/4 is the norm). Draft grading and bust tracking are deferred.
+
+### Source decision
+- Pro Football Reference blocks automated access (Cloudflare challenge on direct HTTP, Jina reader, headless and headed Chromium; 2026-10-06).
+- Use nflverse public releases: season/weekly player stats from NFL play-by-play, PFR snap counts, PFR advanced passing/rushing/receiving/defense (2018+), schedules for QB starts and records, and PFR draft-page career totals for validation. Every player links to his PFR page via the draft-pick PFR ID.
+
+### Plan
+- [x] Shared metric catalogue (career_metrics.py): position groups, per-season metrics, qualifiers for rate stats, milestones.
+- [x] collect-nfl-careers.py: cache nflverse inputs outside Git, join all 2,569 picks by draft year + pick (PFR/GSIS IDs), build one row per career year from draft season through 2026 (2026 in progress), including seasons not played.
+- [x] Season snap share from PFR snap counts with team snap totals; games at 50%+ snaps as a universal starter measure; PFR games started where published; QB starts/records from schedules.
+- [x] build-career-arcs.py: per-position year-by-year distributions (all drafted vs played), milestone rates, same-player year-over-year change, breakout timing for 2017-2021 classes, player grids, CSV and Excel exports.
+- [x] Profile NFL career section and a Career Arcs view (position, metric, round group, basis, chart, year table, breakout timing, sortable player grid).
+- [x] validate-nfl-careers.py: identity joins, season sequences, spot checks vs PFR, career totals vs PFR draft-page totals.
+- [x] Browser QA desktop/mobile, both themes; README/todo update.
+
+### Review
+- 2,569 players, 14,093 career-year rows (9,382 with games); 2,364 players have NFL games. 2026 through Week 4. All PFR IDs joined; eight GSIS gaps are players with no NFL games.
+- 33/33 PFR spot checks match (Mahomes 2018, Jefferson 2020, Chase 2021, Nacua 2023, Barkley 2018, Watt 2021, Parsons 2021, Gardner 2022, Allen 2020, Butker 2019, Trubisky 2017). Finished careers match PFR draft-page totals exactly for 1,156-1,157 of 1,157 players on passing/rushing/receiving; active-player gaps come from the snapshot week.
+- Fixes found in review: nflverse sack yards are negative (ANY/A), traded players' advanced rows use the multi-team total, 17 advanced rows with a different player under the same PFR ID are discarded by age, front-seven grouping follows the NFL role tag, PFR pressure milestones calibrated to PFR scale (edge 30+, interior 20+).
+- Browser checks: careers WR/DE/QB/T, profiles with and without games, desktop 1440 and 390 mobile, light theme; no console errors and no horizontal page overflow.
+- Known limits: no per-season Pro Bowl/All-Pro/AV; OL have no published starts or sacks allowed (snap-based measures instead); games played counts any snap, so a few special-teams-only games differ from PFR's G.
+
+## Filling the gaps: games, starts, AV, honors, lineman detail
+- [x] PFR team rosters 2017-2026 (320 pages), Pro Bowl and All-Pro pages 2017-2025, eight award pages, collected in Derek's Chrome session at under 20 pages/minute (collect-pfr-browser.js); file cached at ~/.agent-reach/nfl-player-profiles/pfr/.
+- [x] Official games played and games started for every position (OL included), season AV (blank for the in-progress season), roster position per season, Pro Bowl / AP All-Pro first and second team, AP awards, Super Bowl MVP, Walter Payton MOY.
+- [x] Penalty detail from play-by-play: holding, false starts, illegal hands, OPI, DPI, defensive holding, roughing the passer, offsides, unnecessary roughness.
+- [x] Pro Bowl milestone for every position; "12+ games started" for OL; honors chips and Honors & value table on profiles; PB/AP badges in the Career Arcs grid; AV in the Excel blocks.
+- Review: Pro Bowl and All-Pro counts match PFR career totals for all 2,360 players with totals; weighted career AV within 1 for all 1,132 finished careers; games exact for 1,129/1,132 finished careers (3 where nflverse's draft-page copy disagrees with PFR rosters). Fixed: hyphenated PFR ID (Rock Ya-Sin) missed by the link pattern; comeback players' stale "last season" in the validator.
+
+## Scouting reports: draft-day and current
+- [x] Draft-day report for all 2,569: grade rank in class/position (2,550 graded), pick vs grade rank, projection/comparison, athletic percentiles (2,502), college production ranked within class at position (2,093), excerpts + full-report link.
+- [x] Current report: status and trend label, AV by season with PB/All-Pro markers, latest season percentiles vs all drafted player-seasons at the position, same-career-year comparison, 2026 so far, ESPN/PFR links.
+- Review: copyright stance unchanged (excerpts only, full NFL.com report linked). Verified Jefferson, Sewell, Trubisky, Nacua, Mendoza (no games: PFR 0 G and no snaps), mobile 390px, no console errors.
+
+## Grades, scout write-ups and page reorganization (2026-10-06)
+- [x] Archive grades on one 5.0-8.0 scale (build-grades.py): NFL.com shown alongside Archive draft (pre-draft only, pooled ridge model, 2017-2021 graded out of sample), Hindsight (best-3-season AV percentile within position + positional honors floors; provisional under 3 seasons) and Current (last three seasons, roster cap). 2017-2021 Spearman vs hindsight: NFL.com 0.50, archive 0.50, draft slot 0.59.
+- [x] Special-teams / return Pro Bowls and All-Pros (KR, PR, RET, ST) stored separately; shown on profiles, excluded from position grades and milestones. PFR count validation still exact.
+- [x] Full NFL.com narratives cached privately (collect-scouting-text.py -> ~/.agent-reach/nfl-player-profiles/scouting-text.json); never published.
+- [x] write-scouting-copy.py: separate draft (pre-draft facts + NFL.com background) and current (fact sheet) passes via headless Claude CLI, --effort low; rejects shared 6-word sequences with NFL.com text and numbers not in the input; drops stale copy when data changes.
+- [x] Profile reorganized: grade cards, tabs (Overview, Scouting, NFL career, Measurements, College, Sources; tab kept in URL), overview cards, one NFL-career table at a time, write-ups atop each report.
+- [x] Career Arcs reorganized into views: When they arrive, Year by year, Every player, Grades (sortable grades table, beat-projection column, who-saw-it-coming scorecard).
+
+### Where we left off
+- Write-up generation is part-way through (resumable). Cached copy lives in ~/.agent-reach/nfl-player-profiles/writeups.json. The first run was stopped by low system memory (11.8 GB machine); now running with 4 workers, batch 15.
+- To finish: `python write-scouting-copy.py` (re-run until it reports 0 batches), then `python write-scouting-copy.py --merge`, then `python build-site.py`, then browser QA of Overview/Scouting tabs with write-ups.
+- Until merged, profiles show the data-built summary in place of the write-up.
+- Not yet done: commit/push of the merged write-ups.

@@ -115,7 +115,7 @@
     .empty-state { padding:50px 28px; text-align:center; color:var(--secondary); }
     .empty-state strong { display:block; color:var(--ink); font-size:20px; font-weight:500; margin-bottom:8px; }
     .mobile-scroll-note { display:none; color:var(--muted); font-size:12px; padding:0 20px 12px; }
-    .page-footer { display:flex; justify-content:space-between; gap:20px; padding:28px 0 38px; color:var(--muted); font-size:12px; }
+    .page-footer { display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 20px; padding:28px 0 38px; color:var(--muted); font-size:12px; }
     .page-footer a:hover { color:var(--ink); }
     [hidden] { display:none!important; }
     @media(min-width:1800px) { .wrap { max-width:1660px; } }
@@ -125,6 +125,7 @@
     @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .chevron { transition:none; } }
   </style>
   <link href="profile-ui.css?v=__PROFILE_STYLE_VERSION__" rel="stylesheet">
+  <link href="career-ui.css?v=__CAREER_STYLE_VERSION__" rel="stylesheet">
 </head>
 <body>
   <header class="masthead">
@@ -133,22 +134,24 @@
         <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
         <span class="brand-name">Draft Archive</span>
       </a>
+      <nav class="site-nav" aria-label="Sections"><a href="#archive" data-nav="archive" aria-current="page">Draft results</a><a href="#careers" data-nav="careers">Career arcs</a></nav>
       <div class="masthead-right"><span class="masthead-range">NFL / 2017–2026</span><button class="theme-button" id="theme-toggle" type="button" aria-label="Switch to light theme"><span id="theme-icon" aria-hidden="true">☼</span><span id="theme-label">Light mode</span></button></div>
     </div>
   </header>
   <main class="wrap" id="archive-view">
     <section class="intro" aria-labelledby="page-title">
-      <div><h1 id="page-title">NFL Draft Archive</h1><p>Every selection. Every round. Measurements, college stats and scouting.</p></div>
+      <div><h1 id="page-title">NFL Draft Archive</h1><p>Every selection. Every round. NFL careers, measurements, college stats and scouting.</p></div>
       <div class="coverage"><strong>2017—2026</strong><span>2,569 selections across 10 drafts</span></div>
     </section>
     <nav class="year-navigation" id="year-navigation" aria-label="Choose a draft year"></nav>
     <div class="archive-heading"><h2>Draft results <span class="profile-link-hint">Select a player to open their profile</span></h2><span>Overall pick numbers · Draft team names at selection</span></div>
     <p class="roster-note" id="roster-note"></p>
     <div id="draft-years"></div>
-    <div class="page-footer"><span>All seven rounds, including compensatory selections.</span><a href="nfl-drafts-2017-2026.csv" download>Download all picks as CSV</a><a href="player-profiles-2017-2026.zip" download>Download all player profiles (ZIP)</a></div>
+    <div class="page-footer"><span>All seven rounds, including compensatory selections.</span><a href="nfl-drafts-2017-2026.csv" download>Download all picks as CSV</a><a href="player-profiles-2017-2026.zip" download>Download all player profiles (ZIP)</a><a href="nfl-career-arcs-2017-2026.xlsx" download>NFL careers by position (Excel)</a><a href="nfl-career-seasons-2017-2026.csv" download>Every NFL player-season (CSV)</a></div>
     <span class="sr-only" id="archive-status" aria-live="polite"></span>
   </main>
   <main class="wrap player-profile" id="profile-view" hidden aria-label="Player profile" tabindex="-1"></main>
+  <main class="wrap career-view" id="career-view" hidden aria-label="Career arcs" tabindex="-1"></main>
   <script type="application/json" id="draft-data">__NFL_DRAFT_DATA__</script>
   <script type="application/json" id="current-team-data">__NFL_CURRENT_TEAMS__</script>
   <script>
@@ -309,5 +312,6 @@
   })();
   </script>
   <script src="profile-ui.js?v=__PROFILE_SCRIPT_VERSION__"></script>
+  <script src="career-ui.js?v=__CAREER_SCRIPT_VERSION__"></script>
 </body>
 </html>

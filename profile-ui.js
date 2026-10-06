@@ -12,6 +12,10 @@
   let archiveFocus = null;
   let controller;
   let requestVersion = 0;
+  let returnHash = '#archive';
+  let host = view;
+  let currentTab = 'overview';
+  const TABS = [['overview','Overview'],['scouting','Scouting'],['career','NFL career'],['measurements','Measurements'],['college','College'],['sources','Sources']];
   Object.entries(data).forEach(([year, picks]) => picks.forEach(row => {
     const [round,pick,team,via,name,position,college] = row;
     records.set(year+'-'+pick, { id:year+'-'+pick,year:Number(year),round,pick,team,via,name,position,college });
@@ -250,12 +254,12 @@
   }
   function topbar(record) {
     const bar=el('div','profile-topbar',null,view);
-    localLink('← Back to draft results','#archive',bar,'profile-back');
+    localLink(returnHash.startsWith('#careers')?'← Back to career arcs':'← Back to draft results',returnHash,bar,'profile-back');
     const nav=el('nav','profile-pick-nav',null,bar); nav.setAttribute('aria-label','Navigate draft picks');
     const previous=records.get(record.year+'-'+(record.pick-1));
     const next=records.get(record.year+'-'+(record.pick+1));
-    if(previous) localLink('← Previous pick','#player='+previous.id,nav,'profile-pick-link').setAttribute('aria-label','Previous pick: '+previous.name);
-    if(next) localLink('Next pick →','#player='+next.id,nav,'profile-pick-link').setAttribute('aria-label','Next pick: '+next.name);
+    if(previous){const link=localLink('← Previous pick','#player='+previous.id,nav,'profile-pick-link');link.setAttribute('aria-label','Previous pick: '+previous.name);link.dataset.pickId=previous.id;}
+    if(next){const link=localLink('Next pick →','#player='+next.id,nav,'profile-pick-link');link.setAttribute('aria-label','Next pick: '+next.name);link.dataset.pickId=next.id;}
   }
   function hero(record) {
     const hero=el('header','profile-hero',null,view);
@@ -269,18 +273,36 @@
     el('span','position',record.position,line); el('span','',record.college || 'College not reported',line);
     const pick=el('div','profile-draft-card',null,hero);
     el('div','pick-caption','Overall pick',pick); el('div','pick-display','#'+record.pick,pick); el('div','draft-caption',record.year+' draft · Round '+record.round,pick);
-    const team=el('p','profile-team-line',null,view); el('strong','',record.team,team);
-    if(record.via) el('span','',' · Selection acquired via '+record.via,team);
     const membership=currentTeams.players[record.id];
-    const current=el('p','profile-team-line profile-current-team',null,view);
-    el('span','','Current team: ',current);
-    sourceLink(currentTeamLabel(membership),membership?.team?membership.sourceUrl:(membership?.statusSourceUrl || membership?.sourceUrl),current,'profile-read-more');
-    el('span','',' · Checked '+currentTeams.asOf,current);
-    const nav=el('nav','profile-section-nav',null,view); nav.setAttribute('aria-label','Player profile sections');
-    [['measurements','Measurements'],['college','College career'],['scouting','Scouting'],['sources','Sources']].forEach(([id,label])=>{
-      const link=localLink(label,'#'+id,nav);
-      link.addEventListener('click',event=>{event.preventDefault();document.getElementById(id)?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});
-    });
+    const team=el('p','profile-team-line',null,view);
+    el('span','','Drafted by ',team);el('strong','',record.team,team);
+    if(record.via) el('span','',' (pick via '+record.via+')',team);
+    el('span','',' · Now: ',team);
+    sourceLink(currentTeamLabel(membership),membership?.team?membership.sourceUrl:(membership?.statusSourceUrl || membership?.sourceUrl),team,'profile-read-more');
+    el('span','',' · checked '+currentTeams.asOf,team);
+  }
+  function tierClass(grade) {
+    if(grade===null || grade===undefined)return 't-none';
+    return grade>=7.5?'t-rare':grade>=7?'t-pb':grade>=6.7?'t-hes':grade>=6.5?'t-qs':grade>=6.3?'t-as':grade>=6.1?'t-ss':grade>=6?'t-bu':grade>=5.7?'t-fr':'t-dns';
+  }
+  function gradeStrip(profile,record) {
+    const g=profile.grades;if(!g)return;
+    const draft=profile.scoutingReports?.draft || {};
+    const strip=el('section','grade-strip',null,view);strip.setAttribute('aria-label','Grades');
+    const card=(label,value,tierText,caption,cls)=>{
+      const c=el('div','grade-card '+cls,null,strip);
+      el('span','grade-label',label,c);
+      el('strong','grade-value',value==null?'--':Number(value).toFixed(2),c);
+      el('span','grade-tier',tierText || (value==null?'Not graded':''),c);
+      if(caption)el('span','grade-caption',caption,c);
+    };
+    card('NFL.com grade',g.nfl,draft.gradeRankClass?ordinal(draft.gradeRankClass)+' of '+draft.classGraded+' in class':'',
+      'Published pre-draft scouting grade','is-nfl');
+    card('Archive draft grade',g.draft,g.draftTier,g.draftOutOfSample?'Pre-draft data only; graded without his class\'s results':'Pre-draft data only',tierClass(g.draft));
+    card('Hindsight grade',g.hindsight,g.hindsightTier,g.hindsight==null?'No completed season yet':g.hindsightProvisional?'Provisional: fewer than 3 seasons':'Best 3 seasons vs. his position',tierClass(g.hindsight));
+    card('Current grade',g.current,g.currentTier,g.currentBasis?String(g.currentBasis).charAt(0).toUpperCase()+String(g.currentBasis).slice(1):'',tierClass(g.current));
+    const link=localLink('How the grades work →','#careers='+(g.group || 'WR')+'&view=grades',strip,'grade-help');
+    link.setAttribute('aria-label','How the archive grades work');
   }
   function table(parent,label,columns) {
     const scroll=el('div','profile-table-scroll',null,parent); scroll.tabIndex=0; scroll.setAttribute('role','region'); scroll.setAttribute('aria-label',label);
@@ -288,8 +310,72 @@
     const header=table.createTHead().insertRow(); columns.forEach(column=>{const cell=el('th','',typeof column==='string'?column:column.label,header);cell.scope='col';if(column.description)cell.title=column.description;});
     return {table,body:table.createTBody()};
   }
+  const careerFormats={
+    pct:value=>(value*100).toFixed(1)+'%',
+    dec1:value=>Number(value).toFixed(1),
+    dec2:value=>Number(value).toFixed(2),
+    int:value=>Math.round(value).toLocaleString(),
+    text:value=>String(value)
+  };
+  function careerValue(value,format) {
+    if(value===null || value===undefined || value==='') return '';
+    return (careerFormats[format] || careerFormats.int)(value);
+  }
+  function renderNFLCareer(profile,record) {
+    const career=profile.nflCareer;
+    const live=career?.inProgress;
+    const s=section(host,'nfl-career','NFL career',live?'Regular season · '+live.season+' through Week '+live.throughWeek:'Regular season');
+    if(!career){empty(s,'NFL career statistics not collected','Rebuild the archive with collect-nfl-careers.py and build-career-arcs.py.');return;}
+    const arcs=window.NFLCareerArcs;
+    const summary=el('p','nfl-career-summary',null,s);
+    const played=career.games>0;
+    if(played){
+      const line=el('span','',null,summary);el('strong','',career.games.toLocaleString()+(career.games===1?' game':' games'),line);
+      const liveGames=career.categories[0]?.seasons.some(row=>row.inProgress && row.g);
+      line.append(' · '+career.seasonsPlayed+' completed '+(career.seasonsPlayed===1?'season':'seasons')+' with games'+(liveGames?' plus '+live.season:''));
+    }
+    (career.groups || []).forEach(group=>localLink('How '+(arcs?.groupLabel(group) || group)+' develop by year →','#careers='+group,summary));
+    if(career.pfrUrl)sourceLink('Pro Football Reference page',career.pfrUrl,summary);
+    const honors=career.honors;
+    if(played && honors){
+      const chips=el('div','nfl-career-honors',null,s);
+      const chip=(label,list,top)=>{if(!list.length)return;const c=el('span',top?'is-top':'',null,chips);el('strong','',list.length+'x '+label,c);c.append(' ('+list.join(', ')+')');};
+      if(honors.avKnown){const c=el('span','',null,chips);el('strong','',honors.av+' career AV',c);c.title='Approximate Value summed across seasons (Pro Football Reference).';}
+      chip('First-team All-Pro',honors.allPro,true);chip('Second-team All-Pro',honors.allPro2,false);chip('Pro Bowl',honors.proBowls,true);
+      chip('All-Pro (special teams)',honors.allProST || [],false);chip('Pro Bowl (special teams)',honors.proBowlsST || [],false);
+      honors.awards.forEach(award=>el('span','is-top',award,chips));
+    }
+    if(!played){empty(s,'No regular-season NFL games yet','No regular-season snaps recorded from '+record.year+' through '+(live?live.season+' Week '+live.throughWeek:'the latest season')+'. Practice-squad and reserve time does not register as games.');return;}
+    const pills=el('div','career-pills',null,s);pills.setAttribute('role','tablist');pills.setAttribute('aria-label','Career tables');
+    const blocks=[];
+    career.categories.forEach((category,index)=>{
+      const block=el('div','profile-category',null,s);el('h3','sr-only',category.label,block);
+      const pill=el('button','career-pill',category.label,pills);pill.type='button';pill.setAttribute('role','tab');
+      blocks.push([pill,block]);
+      pill.addEventListener('click',()=>blocks.forEach(([p,b])=>{const on=p===pill;p.setAttribute('aria-selected',String(on));b.hidden=!on;}));
+      pill.setAttribute('aria-selected',String(index===0));block.hidden=index!==0;
+      const columns=[{label:'Year',description:'Career year (Year 1 = draft season)'},{label:'Season'},{label:'Team'},...category.columns.map(column=>({label:column.label,description:(column.title?column.title+': ':'')+column.description}))];
+      const built=table(block,record.name+' '+category.label.toLowerCase()+' by season',columns);
+      built.table.querySelectorAll('thead th').forEach((th,i)=>{if(i>2)th.classList.add('num');});
+      category.seasons.forEach(season=>{
+        const row=built.body.insertRow();
+        if(!season.g)row.className='is-dnp';
+        if(season.inProgress)row.classList.add('is-live');
+        el('th','','Y'+season.cy,row).scope='row';
+        el('td','',season.season+(season.inProgress?' (Wk '+live.throughWeek+')':''),row);
+        el('td','',season.g?(season.teams || []).join(' / ') || 'NFL':'Did not play',row);
+        category.columns.forEach(column=>el('td','num',season.g?careerValue(season.values[column.key],column.format):'',row));
+      });
+      const totals=category.career?.values || {};
+      if(Object.keys(totals).length){
+        const row=built.body.insertRow();row.className='career-row';el('th','','Career',row).scope='row';el('td','','Through '+(live?live.season+' Wk '+live.throughWeek:'latest'),row);el('td','','',row);
+        category.columns.forEach(column=>el('td','num',careerValue(totals[column.key],column.format),row));
+      }
+    });
+    el('p','profile-note','Year 1 is the '+record.year+' season. Blank cells mean the stat did not apply or was not charted: PFR charting (pressures, coverage, drops) starts in 2018. Games, starts, Approximate Value and honors come from Pro Football Reference team rosters and award pages. Rate stats appear only when the season meets the volume qualifier. Season snap share counts all of the team\'s snaps, including games missed.',s);
+  }
   function renderMeasurements(profile,record) {
-    const s=section(view,'measurements','Measurements & workouts','Position focus: '+record.position);
+    const s=section(host,'measurements','Measurements & workouts','Position focus: '+record.position);
     const keys=positionPriority[record.position] || ['height','weight','fortyYardDash','tenYardSplit','verticalJump','twentyYardShuttle'];
     const rail=el('div','profile-key-metrics'+(['K','P'].includes(record.position)?' is-specialist':''),null,s);
     keys.forEach(key=>{
@@ -325,7 +411,7 @@
   }
   function renderCollege(profile) {
     const college=profile.collegeStats || {};
-    const s=section(view,'college','College career');
+    const s=section(host,'college','College career');
     const summary=college.summary || profile.collegeCareerSummary || profile.careerSummary;
     if(summary) el('p','profile-summary',typeof summary==='string'?summary:summary.text || '',s);
     const categories=(college.categories || []).filter(category=>(category.seasons || []).length || category.career?.values);
@@ -360,30 +446,141 @@
     if(college.sourceUrl) sourceLink('View college statistical record',college.sourceUrl,s,'profile-read-more');
     else (college.sources || []).forEach(source=>{const p=el('p','profile-category-note',null,s);sourceLink(source.label || 'College statistics source',source.url,p);});
   }
-  function renderScouting(profile) {
+  function ordinal(value) {
+    const n=Math.round(value);const tail=n%100>=11 && n%100<=13?'th':({1:'st',2:'nd',3:'rd'})[n%10] || 'th';return n+tail;
+  }
+  function percentileBar(parent,pct,lowerNote) {
+    const bar=el('div','report-bar',null,parent);bar.setAttribute('role','img');bar.setAttribute('aria-label',ordinal(pct)+' percentile');
+    const fill=el('span','report-bar-fill'+(pct>=80?' is-high':pct<=20?' is-low':''),null,bar);fill.style.width=Math.max(2,pct)+'%';
+    if(lowerNote)bar.title=lowerNote;
+    return bar;
+  }
+  function reportHead(panel,kicker,title) {
+    const head=el('div','report-head',null,panel);el('span','report-kicker',kicker,head);el('h3','',title,head);return head;
+  }
+  function renderDraftReport(grid,profile,record) {
+    const report=profile.scoutingReports?.draft;
     const scouting=profile.workouts?.scouting || profile.scouting || {};
-    const s=section(view,'scouting','Draft scouting report');
-    const summary=profile.scoutingSummary;
-    if(summary) el('p','profile-summary',typeof summary==='string'?summary:summary.text || '',s);
-    const meta=[['Grade',scouting.grade],['Projected round',scouting.projection],['Published comparison',scouting.comparison]].filter(([,value])=>value!==null && value!==undefined && value!=='');
-    if(meta.length){const list=el('dl','profile-scouting-meta',null,s);meta.forEach(([label,value])=>{const item=el('div','',null,list);el('dt','',label,item);el('dd','',value,item);});}
-    if(scouting.overviewQuote){const panel=el('div','profile-report-panel',null,s);el('h3','','Published assessment',panel);el('blockquote','',scouting.overviewQuote,panel);panel.style.marginBottom='16px';}
-    if(scouting.strengthQuote || scouting.weaknessQuote){
-      const grid=el('div','profile-report-grid',null,s);
-      [['Strength',scouting.strengthQuote],['Concern',scouting.weaknessQuote]].forEach(([label,quote])=>{
-        const panel=el('div','profile-report-panel',null,grid);el('h3','',label,panel);
-        if(quote)el('blockquote','',quote,panel);else el('p','','No brief sourced excerpt reported.',panel);
+    const panel=el('article','report-panel',null,grid);panel.setAttribute('aria-label','Draft-day report');
+    reportHead(panel,record.year+' NFL Draft · pre-draft','Draft-day report');
+    if(!report){empty(panel,'Draft-day report not built','Run build-scouting-reports.py.');return;}
+    const meta=el('dl','report-meta',null,panel);
+    [['NFL.com grade',report.grade!=null?Number(report.grade).toFixed(2):'Not reported'],
+     ['Grade rank, class',report.gradeRankClass?ordinal(report.gradeRankClass)+' of '+report.classGraded:''],
+     ['Grade rank, '+record.position,report.gradeRankPosition?ordinal(report.gradeRankPosition)+' of '+report.positionGraded:''],
+     ['Archive draft grade',profile.grades?.draft!=null?Number(profile.grades.draft).toFixed(2)+' · '+profile.grades.draftTier:''],
+     ['Selected','#'+record.pick+' overall'],
+     ['Projected',report.projection || ''],
+     ['Comparison',report.comparison || '']].filter(([,value])=>value).forEach(([label,value])=>{const item=el('div','',null,meta);el('dt','',label,item);el('dd','',value,item);});
+    writeupBlock(panel,report);
+    if(report.athletic?.length){
+      const block=el('div','report-block',null,panel);el('h4','','Athletic profile',block);
+      const list=el('div','report-rows',null,block);
+      report.athletic.forEach(test=>{
+        const row=el('div','report-row',null,list);
+        const label=el('span','report-row-label',test.label,row);
+        if(test.kind==='size')el('span','report-tag','size',label);
+        if(test.crossEvent)el('span','report-tag','pro day',label).title='Compared with official combine results; testing conditions differ.';
+        el('span','report-row-value',(test.key==='height'?Math.floor(test.value/12)+'′ '+Math.round((test.value%12)*100)/100+'″':test.value+' '+test.unit),row);
+        percentileBar(row,test.percentile,test.kind==='lower'?'Faster times rank higher':'');
+        el('span','report-row-pct',ordinal(test.percentile),row);
       });
-    } else if(!summary && !scouting.overviewQuote){empty(s,'Scouting narrative not reported in collected sources','No verified written assessment is available in this profile. Measurements alone do not establish a player’s strengths or weaknesses.');}
+      el('p','report-note','Percentiles compare drafted '+record.position+'s in this archive (2017-2026). Size measures rank by size, not ability.',block);
+    }
+    if(report.production?.length){
+      const block=el('div','report-block',null,panel);el('h4','','College production vs. his draft class',block);
+      const list=el('div','report-rows',null,block);
+      report.production.forEach(item=>{
+        const row=el('div','report-row is-text',null,list);
+        el('span','report-row-label',item.label.charAt(0).toUpperCase()+item.label.slice(1),row);
+        const text=el('span','report-row-text',null,row);
+        if(item.final!=null)text.append(Number(item.final).toLocaleString()+' in '+item.finalYear+(item.finalRank?' ('+ordinal(item.finalRank)+' of '+item.finalOf+')':''));
+        if(item.career!=null)text.append((item.final!=null?' · ':'')+'career '+Number(item.career).toLocaleString()+(item.careerRank?' ('+ordinal(item.careerRank)+' of '+item.careerOf+')':''));
+      });
+    }
+    if(scouting.strengthQuote || scouting.weaknessQuote || scouting.overviewQuote){
+      const block=el('div','report-block',null,panel);el('h4','','Published evaluation (excerpt)',block);
+      [['Overview',scouting.overviewQuote],['Strength',scouting.strengthQuote],['Concern',scouting.weaknessQuote]].filter(([,quote])=>quote).forEach(([label,quote])=>{
+        const q=el('div','report-quote',null,block);el('span','report-quote-label',label,q);el('blockquote','',quote,q);
+      });
+    }
     if(scouting.sourceUrl){
-      const byline=el('p','profile-byline',null,s);
+      const byline=el('p','profile-byline',null,panel);
       if(scouting.author)el('span','',scouting.author+' · ',byline);
       sourceLink('Read the full published scouting report',scouting.sourceUrl,byline,'scouting-source-link');
-      if(scouting.strengthQuote || scouting.weaknessQuote || scouting.overviewQuote)el('p','profile-note','The assessment above uses short excerpts from the linked report. Grades, projections and comparisons reflect its pre-draft evaluation.',s);
+    } else if(!report.grade && !report.athletic?.length) {
+      empty(panel,'No published pre-draft evaluation collected','Measurements alone do not establish a player’s strengths or weaknesses.');
     }
   }
+  const STATE_LABELS={rising:'Best season yet','near-peak':'Near his peak','below-peak':'Below his peak',developing:'Developing',out:'Not on a roster',early:'Early career','not-played':'No NFL games yet'};
+  function renderCurrentReport(grid,profile,record) {
+    const report=profile.scoutingReports?.current;
+    const panel=el('article','report-panel',null,grid);panel.setAttribute('aria-label','Current report');
+    reportHead(panel,report?report.season+' season · through Week '+report.throughWeek:'Current season','Current report');
+    if(!report){empty(panel,'Current report not built','Run build-scouting-reports.py.');return;}
+    const status=el('div','report-status',null,panel);
+    el('span','report-state report-state-'+report.state,STATE_LABELS[report.state] || report.state,status);
+    sourceLink(report.status+(report.rosterStatus && report.onRoster?' · '+report.rosterStatus:''),report.statusSourceUrl,status,'report-status-link');
+    if(profile.grades?.current!=null)el('span','report-grade '+tierClass(profile.grades.current),'Current grade '+Number(profile.grades.current).toFixed(2)+' · '+profile.grades.currentTier,status);
+    writeupBlock(panel,report);
+    if(report.state!=='not-played')avChart(panel,report);
+    const ranked=[['Strengths',report.strengths,'is-strength'],['Weak spots',report.concerns,'is-concern']].filter(([,list])=>list?.length);
+    rankedBlock(panel,report,ranked);
+    if(report.thisSeason){
+      const block=el('div','report-block',null,panel);el('h4','',report.season+' so far',block);
+      const line=el('p','report-this-season',null,block);
+      const bits=[report.thisSeason.g+' G',(report.thisSeason.gs ?? 0)+' GS',report.thisSeason.snapShare!=null?(report.thisSeason.snapShare*100).toFixed(0)+'% of snaps':null,...report.thisSeason.line.map(item=>item.text+' '+item.label)].filter(Boolean);
+      line.textContent=bits.join(' · ');
+    }
+    const links=el('p','profile-byline',null,panel);
+    if(report.espnUrl){sourceLink('Latest news & analysis (ESPN)',report.espnUrl,links,'scouting-source-link');links.append(' · ');}
+    if(report.pfrUrl)sourceLink('Pro Football Reference page',report.pfrUrl,links,'scouting-source-link');
+  }
+  function avChart(parent,report) {
+    const seasons=(report.av || []).filter(row=>row.g>0 || row.av!=null);
+    if(!seasons.length)return;
+    {
+      const block=el('div','report-block',null,parent);el('h4','','Approximate Value by season',block);
+      const chart=el('div','av-chart',null,block);chart.setAttribute('role','img');
+      const max=Math.max(12,...seasons.map(row=>row.av || 0));
+      chart.setAttribute('aria-label','Approximate Value by season: '+seasons.map(row=>row.season+' '+(row.av==null?'in progress':row.av)).join(', '));
+      (report.av || []).forEach(row=>{
+        const col=el('div','av-col'+(row.av==null && row.g?' is-live':'')+(!row.g?' is-dnp':''),null,chart);
+        col.title=row.season+' (Year '+row.cy+'): '+(row.g?row.g+' G, '+(row.gs ?? '?')+' GS, '+(row.av==null?'AV pending':row.av+' AV'):'did not play')+(row.ap?' · First-team All-Pro':row.pb?' · Pro Bowl':'');
+        const bar=el('div','av-bar'+(row.ap?' is-ap':row.pb?' is-pb':''),null,el('div','av-track',null,col));
+        bar.style.height=(row.av?Math.max(4,row.av/max*100):row.g?3:0)+'%';
+        el('span','av-value',row.av==null?(row.g?'--':''):row.av,col);
+        el('span','av-year',"'"+String(row.season).slice(2),col);
+      });
+      el('p','report-note','Bars: PFR Approximate Value (12+ is Pro Bowl level). Red = first-team All-Pro, outlined = Pro Bowl. AV for the current season is published after it ends.',block);
+    }
+  }
+  function rankedBlock(panel,report,ranked) {
+    if(ranked.length){
+      const block=el('div','report-block',null,panel);el('h4','',report.latest.season+' season vs. all drafted '+report.groupLabel.toLowerCase(),block);
+      const list=el('div','report-rows',null,block);
+      ranked.forEach(([title,items,cls])=>{
+        el('div','report-subhead '+cls,title,list);
+        items.forEach(item=>{const row=el('div','report-row',null,list);el('span','report-row-label',item.label,row);el('span','report-row-value',item.text,row);percentileBar(row,item.percentile);el('span','report-row-pct',ordinal(item.percentile),row);});
+      });
+      el('p','report-note','Percentiles rank this season against every 2017-2025 season by drafted '+report.groupLabel.toLowerCase()+' (8+ games for totals; rate stats need their volume qualifier). Lower is better for penalties, drops, missed tackles and coverage allowed.',block);
+    }
+  }
+  function writeupBlock(panel,report,grade,tierText) {
+    if(report.writeup){
+      el('p','report-writeup',report.writeup,panel);
+      const details=el('details','report-numbers',null,panel);el('summary','','By the numbers',details);el('p','report-summary',report.summary,details);
+    } else el('p','report-summary',report.summary,panel);
+  }
+  function renderScouting(profile,record) {
+    const s=section(host,'scouting','Scouting reports','Draft day vs. today');
+    const grid=el('div','report-grid',null,s);
+    renderDraftReport(grid,profile,record);
+    renderCurrentReport(grid,profile,record);
+    el('p','profile-note',profile.scoutingReports?.note || 'Reports are built from the published grades, testing and statistics in this archive.',s);
+  }
   function renderSources(profile,record) {
-    const footer=el('section','profile-sources',null,view);footer.id='sources';el('h2','','Sources & coverage',footer);
+    const footer=el('section','profile-sources',null,host);footer.id='sources';el('h2','','Sources & coverage',footer);
     const all=[...(profile.workouts?.sources || []),...(profile.collegeStats?.sources || [])];
     const membership=currentTeams.players[record.id];
     if(membership?.sourceUrl)all.push({label:'Current NFL roster / player record',url:membership.sourceUrl});
@@ -394,6 +591,8 @@
     if(profile.workouts?.bio?.sourceUrl)all.push({label:'Player biography',url:profile.workouts.bio.sourceUrl});
     (profile.publishedWorkouts || []).forEach(workout=>all.push({label:workout.sourceLabel || workout.event || 'Published workout',url:workout.sourceUrl}));
     all.push({label:record.year+' draft selections & trade history',url:'https://en.wikipedia.org/wiki/'+record.year+'_NFL_draft#Player_selections'});
+    if(profile.nflCareer?.pfrUrl)all.push({label:'Pro Football Reference player page',url:profile.nflCareer.pfrUrl});
+    if(profile.nflCareer)all.push({label:'NFL career statistics, PFR snap counts and charting (nflverse public releases)',url:'https://github.com/nflverse/nflverse-data/releases'});
     (Array.isArray(profile.collegeStats?.experience)?profile.collegeStats.experience:[]).forEach(row=>{if(row.sourceUrl)all.push({label:row.sourceLabel || 'College participation record',url:row.sourceUrl});});
     const seen=new Set(),list=el('ol','',null,footer);
     all.forEach(source=>{const url=safeURL(source.url);if(url && !seen.has(url)){seen.add(url);sourceLink(source.label || 'Source',url,el('li','',null,list));}});
@@ -401,8 +600,72 @@
     if(profile.generatedAt || profile.updatedAt){const value=profile.updatedAt || profile.generatedAt;el('p','profile-category-note','Profile data collected: '+String(value).slice(0,10),footer);}
     const download=localLink('Download this player’s data (JSON)','data/profiles/'+record.id+'.json',el('p','profile-category-note',null,footer),'profile-read-more');download.download=record.id+'.json';
   }
+  function renderOverview(profile,record) {
+    const grid=el('div','overview-grid',null,host);
+    const main=el('section','overview-card overview-scouting',null,grid);
+    el('h2','','Scouting report',main);
+    const draft=profile.scoutingReports?.draft,current=profile.scoutingReports?.current;
+    const part=(kicker,title,report,extra)=>{
+      if(!report)return;
+      const block=el('div','overview-report',null,main);
+      const head=el('div','overview-report-head',null,block);el('span','report-kicker',kicker,head);el('h3','',title,head);
+      if(extra)extra(head);
+      el('p','report-writeup',report.writeup || report.summary,block);
+    };
+    part(record.year+' NFL Draft','Draft day',draft,head=>{if(profile.grades?.draft!=null)el('span','report-grade '+tierClass(profile.grades.draft),'Archive '+Number(profile.grades.draft).toFixed(2)+' · '+profile.grades.draftTier,head);});
+    part(current?current.season+' · Week '+current.throughWeek:'Now','Today',current,head=>{if(profile.grades?.current!=null)el('span','report-grade '+tierClass(profile.grades.current),'Current '+Number(profile.grades.current).toFixed(2)+' · '+profile.grades.currentTier,head);});
+    const more=el('button','overview-more','Full draft-day and current reports →',main);more.type='button';more.addEventListener('click',()=>selectTab('scouting',true));
+    const side=el('aside','overview-side',null,grid);
+    const glance=el('section','overview-card',null,side);el('h2','','Career at a glance',glance);
+    const career=profile.nflCareer,honors=career?.honors;
+    const stats=el('dl','glance-stats',null,glance);
+    const done=(career?.categories?.[0]?.seasons || []).filter(row=>!row.inProgress);
+    const starts=done.reduce((sum,row)=>sum+(row.values?.gs || 0),0);
+    [['Games',career?career.games:0],['Starts',starts],['Career AV',honors?.avKnown?honors.av:'--'],['Pro Bowls',honors?.proBowls?.length || 0],['All-Pro (1st)',honors?.allPro?.length || 0],['Seasons',career?.seasonsPlayed || 0]]
+      .forEach(([label,value])=>{const item=el('div','',null,stats);el('dt','',label,item);el('dd','',value,item);});
+    if(honors?.awards?.length){const chips=el('div','nfl-career-honors',null,glance);honors.awards.forEach(award=>el('span','is-top',award,chips));}
+    if(current && current.state!=='not-played')avChart(glance,current);
+    const goCareer=el('button','overview-more','Season-by-season stats →',glance);goCareer.type='button';goCareer.addEventListener('click',()=>selectTab('career',true));
+    const tests=(draft?.athletic || []).filter(test=>test.kind!=='size').sort((a,b)=>Math.abs(b.percentile-50)-Math.abs(a.percentile-50)).slice(0,4);
+    if(tests.length){
+      const card=el('section','overview-card',null,side);el('h2','','Testing standouts',card);
+      const list=el('div','report-rows',null,card);
+      tests.forEach(test=>{const row=el('div','report-row',null,list);el('span','report-row-label',test.label,row);el('span','report-row-value',test.value+' '+test.unit,row);percentileBar(row,test.percentile);el('span','report-row-pct',ordinal(test.percentile),row);});
+      const goTests=el('button','overview-more','All measurements →',card);goTests.type='button';goTests.addEventListener('click',()=>selectTab('measurements',true));
+    }
+  }
+  let tabButtons=new Map(),tabPanels=new Map();
+  function selectTab(key,focus) {
+    if(!tabPanels.has(key))key='overview';
+    currentTab=key;
+    tabButtons.forEach((button,name)=>{const on=name===key;button.setAttribute('aria-selected',String(on));button.tabIndex=on?0:-1;});
+    tabPanels.forEach((panel,name)=>{panel.hidden=name!==key;});
+    if(currentId){
+      const hash='#player='+currentId+(key!=='overview'?'&tab='+key:'');
+      if(location.hash!==hash)history.replaceState(null,'',hash);
+      view.querySelectorAll('[data-pick-id]').forEach(link=>{link.href='#player='+link.dataset.pickId+(key!=='overview'?'&tab='+key:'');});
+    }
+    if(focus){tabButtons.get(key)?.focus();const top=view.querySelector('.profile-tabs');if(top && top.getBoundingClientRect().top<0)top.scrollIntoView({block:'start'});}
+  }
   function renderProfile(profile,record) {
-    view.replaceChildren(); topbar(record);hero(record);renderMeasurements(profile,record);renderCollege(profile);renderScouting(profile);renderSources(profile,record);
+    view.replaceChildren(); topbar(record);hero(record);gradeStrip(profile,record);
+    const bar=el('div','profile-tabs',null,view);bar.setAttribute('role','tablist');bar.setAttribute('aria-label','Profile sections');
+    tabButtons=new Map();tabPanels=new Map();
+    TABS.forEach(([key,label])=>{
+      const button=el('button','profile-tab',label,bar);button.type='button';button.setAttribute('role','tab');button.id='tab-'+key;button.setAttribute('aria-controls','panel-'+key);
+      const panel=el('div','profile-panel',null,view);panel.id='panel-'+key;panel.setAttribute('role','tabpanel');panel.setAttribute('aria-labelledby','tab-'+key);panel.hidden=true;
+      tabButtons.set(key,button);tabPanels.set(key,panel);
+      button.addEventListener('click',()=>selectTab(key));
+    });
+    bar.addEventListener('keydown',event=>{
+      const keys=[...tabButtons.keys()];const index=keys.indexOf(currentTab);
+      if(event.key==='ArrowRight' || event.key==='ArrowLeft'){event.preventDefault();selectTab(keys[(index+(event.key==='ArrowRight'?1:keys.length-1))%keys.length],true);}
+    });
+    const renderers=[['overview',()=>renderOverview(profile,record)],['scouting',()=>renderScouting(profile,record)],['career',()=>renderNFLCareer(profile,record)],
+      ['measurements',()=>renderMeasurements(profile,record)],['college',()=>renderCollege(profile)],['sources',()=>renderSources(profile,record)]];
+    renderers.forEach(([key,render])=>{host=tabPanels.get(key);render();});
+    host=view;
+    selectTab(currentTab);
   }
   async function showProfile(id) {
     closeMetricInfo();
@@ -413,7 +676,7 @@
     controller?.abort();controller=new AbortController();const version=++requestVersion;
     view.replaceChildren();
     if(!record){view.setAttribute('aria-busy','false');localLink('← Back to draft results','#archive',view,'profile-back');empty(view,'Player profile not found','Choose a player from the draft results to open a valid profile.');window.scrollTo({top:0,behavior:'instant'});view.focus({preventScroll:true});return;}
-    topbar(record);const loading=el('div','profile-loading',null,view);el('h1','',record.name,loading);el('p','','Loading measurements, college statistics and scouting…',loading);
+    topbar(record);const loading=el('div','profile-loading',null,view);el('h1','',record.name,loading);el('p','','Loading NFL career, measurements, college statistics and scouting…',loading);
     window.scrollTo({top:0,behavior:'instant'});view.focus({preventScroll:true});
     try {
       let profile=profileCache.get(id);
@@ -434,10 +697,24 @@
     if(!archiveFocus){const year=records.get(previous)?.year || Math.max(...Object.keys(data).map(Number));openYear(String(year),false);archiveFocus=archive.querySelector('[data-profile="'+previous+'"]');archiveScroll=0;}
     requestAnimationFrame(()=>{window.scrollTo({top:archiveScroll,behavior:'instant'});(archiveFocus || matchingLink)?.focus({preventScroll:true});});
   }
-  function route() {
+  function leaveProfile() {
+    if(!currentId)return;
+    controller?.abort();++requestVersion;currentId=null;view.hidden=true;
+  }
+  function route(event) {
     closeMetricInfo();
-    const match=location.hash.match(/^#player=(\d{4}-\d+)$/);
-    if(match)showProfile(match[1]);else if(location.hash==='#archive' || location.hash==='' || location.hash==='#')showArchive();
+    const match=location.hash.match(/^#player=(\d{4}-\d+)(?:&tab=([a-z]+))?$/);
+    if(match){
+      const sameProfile=match[1]===currentId && !view.hidden;
+      currentTab=match[2] || 'overview';
+      if(sameProfile && tabPanels.size){selectTab(currentTab);return;}
+      const previous=event?.oldURL ? new URL(event.oldURL).hash : '';
+      if(previous.startsWith('#careers'))returnHash=previous;
+      else if(!previous.startsWith('#player='))returnHash='#archive';
+      showProfile(match[1]);
+    }
+    else if(location.hash.startsWith('#careers'))leaveProfile();
+    else if(location.hash==='#archive' || location.hash==='' || location.hash==='#')showArchive();
   }
   archive.addEventListener('click',event=>{const link=event.target.closest('[data-profile]');if(link){archiveScroll=window.scrollY;archiveFocus=link;}});
   window.addEventListener('hashchange',route);

@@ -1,0 +1,216 @@
+/* Career arcs and profile NFL career tables share the archive's navy, red and Barlow system. */
+.site-nav { display:flex; gap:6px; align-items:center; margin-right:auto; margin-left:34px; }
+.site-nav a { display:inline-flex; align-items:center; min-height:38px; padding:6px 13px; border-radius:7px; color:var(--secondary); font-size:14px; font-weight:500; }
+.site-nav a:hover { background:var(--hover); color:var(--ink); }
+.site-nav a[aria-current="page"] { color:var(--ink); background:var(--raised); box-shadow:inset 0 -2px 0 var(--red); }
+
+.career-view { padding-top:8px; padding-bottom:56px; }
+.career-intro { display:flex; justify-content:space-between; align-items:flex-end; gap:30px; padding-top:31px; padding-bottom:26px; }
+.career-intro p { color:var(--secondary); margin:0; font-size:16px; max-width:70ch; line-height:1.55; }
+.career-intro .coverage strong { font-size:26px; }
+.career-positions { display:grid; grid-template-columns:repeat(16,minmax(0,1fr)); gap:6px; margin-bottom:30px; }
+.career-position { border:1px solid var(--line); background:var(--surface); border-radius:8px; min-height:58px; padding:7px 4px; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:3px; }
+.career-position:hover { background:var(--hover); border-color:var(--secondary); }
+.career-position[aria-pressed="true"] { border-color:var(--red); background:var(--red-soft); }
+.career-position .pos-key { font:500 22px/1 'Barlow Condensed',sans-serif; }
+.career-position .pos-count { color:var(--secondary); font-size:11px; font-variant-numeric:tabular-nums; }
+.career-position[aria-pressed="true"] .pos-key { color:var(--red); }
+
+.career-heading { display:flex; justify-content:space-between; align-items:baseline; gap:20px; flex-wrap:wrap; margin-bottom:16px; }
+.career-heading h2 { font:600 40px/1 'Barlow Condensed',sans-serif; margin:0; }
+.career-heading span { color:var(--secondary); font-size:13px; }
+.career-controls { display:flex; flex-wrap:wrap; align-items:center; gap:12px 22px; padding:16px 20px; border:1px solid var(--line); border-radius:10px; background:var(--surface); margin-bottom:22px; position:sticky; top:0; z-index:5; }
+.career-control { display:flex; align-items:center; gap:10px; }
+.career-control-label { color:var(--secondary); font-size:12px; white-space:nowrap; }
+.career-controls .filter-select { min-width:250px; }
+.segmented { display:inline-flex; border:1px solid var(--line); border-radius:7px; overflow:hidden; }
+.segmented button { border:0; border-right:1px solid var(--line); background:transparent; color:var(--secondary); min-height:40px; padding:6px 13px; font-size:13px; }
+.segmented button:last-child { border-right:0; }
+.segmented button:hover:not(:disabled) { background:var(--hover); color:var(--ink); }
+.segmented button[aria-pressed="true"] { background:var(--ink); color:var(--bg); font-weight:600; }
+.segmented button:disabled { opacity:.45; cursor:not-allowed; }
+.career-control-note { color:var(--muted); font-size:12px; }
+
+.career-panel { border:1px solid var(--line); border-radius:10px; background:var(--surface); margin-bottom:22px; overflow:hidden; }
+.career-panel-head { display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; padding:20px 24px 0; }
+.career-panel-head h3 { font:600 27px/1.1 'Barlow Condensed',sans-serif; margin:0; }
+.career-panel-head span { color:var(--secondary); font-size:12px; }
+.career-panel-body { padding:18px 24px 24px; }
+.career-panel-note { color:var(--secondary); font-size:12px; line-height:1.6; margin:14px 0 0; max-width:110ch; }
+
+.timing-scroll { overflow-x:auto; }
+.career-answer { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:28px; align-items:start; }
+.career-takeaways { margin:0; padding:0; list-style:none; display:grid; gap:14px; }
+.career-takeaways li { position:relative; padding-left:20px; font-size:16px; line-height:1.6; color:var(--secondary); }
+.career-takeaways li::before { content:''; position:absolute; left:0; top:10px; width:8px; height:8px; border-radius:2px; background:var(--red); }
+.career-takeaways strong { color:var(--ink); font-weight:600; }
+.career-takeaways li.is-caution::before { background:var(--muted); }
+.timing-table { width:100%; border-collapse:collapse; font-size:13px; font-variant-numeric:tabular-nums; }
+.timing-table th,.timing-table td { padding:9px 8px; border-bottom:1px solid var(--line); text-align:center; }
+.timing-table thead th { color:var(--secondary); font-weight:500; font-size:12px; }
+.timing-table tbody th { text-align:left; font-weight:500; color:var(--ink); white-space:normal; min-width:150px; }
+.timing-table tbody tr:last-child>* { border-bottom:0; }
+.timing-table td { color:var(--secondary); position:relative; }
+.timing-cell { position:relative; display:block; min-width:42px; border-radius:4px; padding:5px 2px; z-index:0; }
+.timing-cell.is-mode { color:var(--ink); font-weight:700; box-shadow:inset 0 0 0 1px var(--red); }
+.timing-cell.has-bar { color:var(--ink); }
+.timing-reached { color:var(--ink); font-weight:600; }
+.timing-caption { color:var(--secondary); font-size:12px; margin:0 0 10px; line-height:1.5; }
+.timing-group + .timing-group { margin-top:22px; }
+
+.arc-chart-wrap { margin-top:4px; }
+.arc-legend { display:flex; flex-wrap:wrap; gap:8px 20px; margin:0 0 10px; color:var(--secondary); font-size:12px; }
+.arc-legend span { display:inline-flex; align-items:center; gap:7px; }
+.arc-legend i { display:inline-block; width:20px; height:0; border-top:3px solid currentColor; }
+.arc-legend i.is-dashed { border-top-style:dashed; border-top-width:2px; }
+.arc-chart { width:100%; height:auto; display:block; overflow:visible; }
+.arc-chart text { font-family:'Barlow',sans-serif; fill:var(--secondary); font-size:12px; }
+.arc-chart .grid-line { stroke:var(--line); stroke-width:1; }
+.arc-chart .axis-label { font-size:13px; fill:var(--ink); }
+.arc-chart .small-sample { fill:var(--muted); }
+.arc-chart .series { fill:none; stroke-width:2.5; stroke-linejoin:round; stroke-linecap:round; }
+.arc-chart .series-p90 { stroke:var(--muted); stroke-width:2; }
+.arc-chart .series-p75 { stroke:var(--secondary); }
+.arc-chart .series-median { stroke:var(--red); stroke-width:3.5; }
+.arc-chart .series-mean { stroke:var(--ink); stroke-width:1.75; stroke-dasharray:6 5; }
+.arc-chart .series-faded { opacity:.35; }
+.arc-chart .dot { stroke:var(--surface); stroke-width:2; }
+.arc-chart .dot-median { fill:var(--red); }
+.arc-chart .dot-p75 { fill:var(--secondary); }
+.arc-chart .dot-p90 { fill:var(--muted); }
+.arc-chart .dot-mean { fill:var(--ink); }
+.arc-chart .hover-zone { fill:transparent; }
+.arc-chart .hover-zone:hover { fill:var(--hover); opacity:.5; }
+.legend-median { color:var(--red); }
+.legend-p75 { color:var(--secondary); }
+.legend-p90 { color:var(--muted); }
+.legend-mean { color:var(--ink); }
+
+.arc-table-scroll { overflow-x:auto; margin-top:20px; border:1px solid var(--line); border-radius:8px; }
+.arc-table { width:100%; border-collapse:collapse; font-size:13px; font-variant-numeric:tabular-nums; }
+.arc-table th,.arc-table td { padding:10px 12px; border-bottom:1px solid var(--line); text-align:right; white-space:nowrap; }
+.arc-table thead th { background:var(--raised); color:var(--secondary); font-weight:500; font-size:12px; }
+.arc-table tbody th { text-align:left; font-weight:500; color:var(--ink); position:sticky; left:0; background:var(--surface); z-index:1; min-width:210px; white-space:normal; }
+.arc-table thead th:first-child { text-align:left; position:sticky; left:0; z-index:2; }
+.arc-table td { color:var(--secondary); }
+.arc-table tr.is-key td { color:var(--ink); font-weight:600; }
+.arc-table tr.section-row th { background:var(--bg); color:var(--secondary); font-size:12px; font-weight:500; padding-top:9px; padding-bottom:9px; }
+.arc-table tr.section-row td { background:var(--bg); }
+.arc-table td.is-small { color:var(--muted); font-style:italic; }
+.arc-table td.is-best { color:var(--red); font-weight:700; }
+.arc-table tbody tr:last-child>* { border-bottom:0; }
+
+.grid-toolbar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:14px; }
+.grid-toolbar .search-field { min-width:240px; }
+.grid-toolbar .result-count { margin-left:auto; }
+.career-grid-scroll { overflow:auto; max-height:78vh; border:1px solid var(--line); border-radius:8px; }
+.career-grid { border-collapse:separate; border-spacing:0; width:100%; font-size:13px; font-variant-numeric:tabular-nums; }
+.career-grid th,.career-grid td { padding:0; border-bottom:1px solid var(--line); text-align:right; white-space:nowrap; }
+.career-grid thead th { position:sticky; top:0; z-index:3; background:var(--raised); }
+.career-grid thead th button { width:100%; border:0; background:transparent; color:var(--secondary); font-size:12px; font-weight:500; padding:11px 10px; text-align:inherit; display:flex; justify-content:flex-end; gap:5px; align-items:center; min-height:44px; }
+.career-grid thead th button:hover { color:var(--ink); }
+.career-grid thead th[aria-sort] button { color:var(--ink); font-weight:600; }
+.career-grid thead th .sort-arrow { font-size:10px; color:var(--red); }
+.career-grid thead th:first-child { left:0; z-index:4; text-align:left; }
+.career-grid thead th:first-child button,.career-grid thead th:nth-child(2) button { justify-content:flex-start; }
+.career-grid tbody th { position:sticky; left:0; z-index:2; background:var(--surface); text-align:left; font-weight:500; padding:8px 12px 8px 14px; min-width:200px; max-width:240px; white-space:normal; }
+.career-grid tbody th a { color:var(--ink); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:4px; }
+.career-grid tbody th a:hover { color:var(--red); text-decoration-color:var(--red); }
+.career-grid tbody th .grid-pos { margin-left:7px; color:var(--muted); font-size:11px; font-weight:400; }
+.career-grid td { padding:8px 10px; color:var(--ink); min-width:62px; }
+.career-grid td.grid-draft { text-align:left; color:var(--secondary); font-size:12px; min-width:110px; }
+.career-grid td.cell-dnp { color:var(--muted); }
+.career-grid td.cell-nq { color:var(--muted); }
+.career-grid td.cell-live { font-style:italic; }
+.career-grid td.cell-live::after { content:'*'; color:var(--red); margin-left:1px; }
+.career-grid td.grid-summary { font-weight:600; border-left:1px solid var(--line); }
+.honor-badge { font-size:9px; font-weight:700; letter-spacing:.3px; margin-left:3px; padding:1px 3px; border-radius:3px; border:1px solid var(--line); color:var(--secondary); vertical-align:4px; font-style:normal; }
+.honor-badge.honor-ap { color:#fff; background:var(--red); border-color:var(--red); }
+.honor-badge.honor-ap2 { color:var(--ink); border-color:var(--red); }
+.nfl-career-honors { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 20px; }
+.nfl-career-honors span { padding:5px 10px; border:1px solid var(--line); border-radius:999px; background:var(--surface); font-size:13px; color:var(--secondary); }
+.nfl-career-honors span.is-top { border-color:var(--red); color:var(--ink); background:var(--red-soft); }
+.nfl-career-honors strong { color:var(--ink); font-weight:600; }
+.career-grid tbody tr:hover>* { background-image:linear-gradient(var(--hover),var(--hover)); }
+.career-grid tbody tr:hover th { background:var(--hover); }
+.grid-legend { display:flex; flex-wrap:wrap; gap:6px 18px; margin:12px 0 0; color:var(--secondary); font-size:12px; }
+.grid-legend b { color:var(--ink); font-weight:600; }
+
+.career-method { border:1px solid var(--line); border-radius:10px; background:var(--surface); margin-bottom:22px; }
+.career-method summary { padding:16px 22px; font-weight:500; min-height:52px; }
+.career-method[open] summary { border-bottom:1px solid var(--line); }
+.career-method ul { margin:0; padding:18px 22px 20px 40px; display:grid; gap:9px; color:var(--secondary); font-size:13px; line-height:1.6; max-width:120ch; }
+.career-downloads { display:flex; flex-wrap:wrap; gap:10px 24px; color:var(--secondary); font-size:13px; }
+.career-downloads a { color:var(--ink); text-decoration:underline; text-decoration-color:var(--muted); text-underline-offset:3px; }
+.career-downloads a:hover { color:var(--red); }
+.career-loading { padding:50px 0; color:var(--secondary); }
+
+/* Profile NFL career section */
+.nfl-career-summary { display:flex; flex-wrap:wrap; gap:8px 22px; align-items:baseline; margin:0 0 20px; color:var(--secondary); font-size:15px; }
+.nfl-career-summary strong { color:var(--ink); font-weight:600; }
+.nfl-career-summary a { color:var(--ink); text-decoration:underline; text-decoration-color:var(--muted); text-underline-offset:3px; }
+.nfl-career-summary a:hover { color:var(--red); }
+.profile-data-table tr.is-dnp>* { color:var(--muted); }
+.profile-data-table tr.is-live th::after { content:'*'; color:var(--red); }
+.profile-data-table td.num,.profile-data-table th.num { text-align:right; }
+.profile-data-table th[title] { cursor:help; }
+
+@media(max-width:1300px) { .career-positions { grid-template-columns:repeat(8,minmax(0,1fr)); } }
+@media(max-width:1100px) { .career-answer { grid-template-columns:minmax(0,1fr); } .site-nav { margin-left:18px; } }
+@media(max-width:760px) {
+  .site-nav { margin-left:10px; gap:2px; }
+  .site-nav a { padding:6px 9px; font-size:13px; }
+  .career-intro { padding-top:24px; padding-bottom:20px; }
+  .career-intro .coverage { display:none; }
+  .career-intro p { font-size:14px; }
+  .career-positions { grid-template-columns:repeat(4,minmax(0,1fr)); gap:5px; margin-bottom:22px; }
+  .career-position { min-height:50px; }
+  .career-heading h2 { font-size:33px; }
+  .career-controls { position:static; padding:14px; gap:12px; }
+  .career-control { flex-wrap:wrap; width:100%; gap:6px; }
+  .career-controls .filter-select { min-width:0; width:100%; }
+  .segmented { width:100%; }
+  .segmented button { flex:1; padding:6px 6px; font-size:12px; }
+  .career-panel-head { padding:16px 16px 0; }
+  .career-panel-head h3 { font-size:24px; }
+  .career-panel-body { padding:14px 16px 18px; }
+  .career-takeaways li { font-size:15px; }
+  .timing-table th,.timing-table td { padding:7px 4px; }
+  .timing-table tbody th { min-width:110px; font-size:12px; }
+  .timing-cell { min-width:30px; }
+  .arc-table tbody th { min-width:150px; }
+  .career-grid tbody th { min-width:150px; }
+  .grid-toolbar .search-field { flex-basis:100%; }
+  .grid-toolbar .result-count { margin-left:0; }
+  .masthead-right .theme-button #theme-label { display:none; }
+}
+@media(max-width:420px) { .brand-name { display:none; } .career-positions { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+
+/* Career arcs views */
+.career-views { display:flex; gap:4px; border-bottom:1px solid var(--line); margin:0 0 22px; overflow-x:auto; scrollbar-width:none; }
+.career-views::-webkit-scrollbar { display:none; }
+.career-view-tab { border:0; background:transparent; color:var(--secondary); font-size:15px; font-weight:500; padding:12px 16px 11px; border-bottom:3px solid transparent; white-space:nowrap; min-height:48px; }
+.career-view-tab:hover { color:var(--ink); }
+.career-view-tab[aria-selected="true"] { color:var(--ink); border-bottom-color:var(--red); font-weight:600; }
+/* Grades view */
+.t-rare { --tier:#e45050; } .t-pb { --tier:#ef7a5a; } .t-hes { --tier:#e9a35a; } .t-qs { --tier:#d8c35c; } .t-as { --tier:#8fb879; }
+.t-ss { --tier:#6aa7b8; } .t-bu { --tier:#7f92ad; } .t-fr { --tier:#5f6f86; } .t-dns { --tier:#46546a; } .t-none { --tier:var(--line); }
+.grade-dot { display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--tier,var(--line)); margin-right:7px; vertical-align:1px; }
+.grade-legend { display:flex; flex-wrap:wrap; gap:6px 16px; margin-bottom:18px; color:var(--secondary); font-size:12px; }
+.grade-explain { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin-bottom:18px; }
+.grade-explain div { border:1px solid var(--line); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:5px; }
+.grade-explain strong { font-size:13px; }
+.grade-explain span { color:var(--secondary); font-size:12px; line-height:1.55; }
+.grade-scorecard { border:1px solid var(--line); border-radius:8px; padding:14px 16px; margin-bottom:18px; background:var(--raised); }
+.grade-scorecard > strong { display:block; font-size:14px; margin-bottom:10px; }
+.grade-score-bars { display:grid; gap:8px; max-width:640px; }
+.grade-score-row { display:grid; grid-template-columns:160px minmax(0,1fr) 44px; align-items:center; gap:12px; font-size:13px; color:var(--secondary); }
+.grade-score-value { text-align:right; color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums; }
+.grades-table td.grade-cell { text-align:left; min-width:96px; font-variant-numeric:tabular-nums; }
+.grades-table td.grade-delta { font-weight:600; }
+.grades-table td.grade-delta.is-up { color:var(--red); }
+.grades-table td.grade-delta.is-down { color:var(--muted); }
+.grades-table td.grade-delta.is-even { color:var(--secondary); font-weight:400; }
+@media(max-width:1100px) { .grade-explain { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:760px) { .career-view-tab { padding:11px 11px 10px; font-size:13px; } .grade-explain { grid-template-columns:minmax(0,1fr); } .grade-score-row { grid-template-columns:120px minmax(0,1fr) 40px; } }
+.grades-table td.grade-cell { text-align:right; }

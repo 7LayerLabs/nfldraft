@@ -13,3 +13,6 @@ site-script-check.js
 *.verify-backup
 .agent-reach/
 raw/
+
+# Stray files a headless Claude CLI call may write into the project
+prospect_reports_*.json

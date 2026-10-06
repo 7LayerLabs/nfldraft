@@ -1,0 +1,1662 @@
+{
+ "asOf": "2026-10-06",
+ "players": 2569,
+ "spotChecks": [
+  {
+   "id": "2017-10",
+   "player": "Patrick Mahomes",
+   "season": 2018,
+   "field": "pass_yds",
+   "pfr": 5097,
+   "collected": 5097,
+   "ok": true
+  },
+  {
+   "id": "2017-10",
+   "player": "Patrick Mahomes",
+   "season": 2018,
+   "field": "pass_td",
+   "pfr": 50,
+   "collected": 50,
+   "ok": true
+  },
+  {
+   "id": "2017-10",
+   "player": "Patrick Mahomes",
+   "season": 2018,
+   "field": "int",
+   "pfr": 12,
+   "collected": 12,
+   "ok": true
+  },
+  {
+   "id": "2017-10",
+   "player": "Patrick Mahomes",
+   "season": 2018,
+   "field": "gs",
+   "pfr": 16,
+   "collected": 16,
+   "ok": true
+  },
+  {
+   "id": "2017-10",
+   "player": "Patrick Mahomes",
+   "season": 2018,
+   "field": "qb_wins",
+   "pfr": 12,
+   "collected": 12,
+   "ok": true
+  },
+  {
+   "id": "2017-10",
+   "player": "Patrick Mahomes",
+   "season": 2018,
+   "field": "rating",
+   "pfr": 113.8,
+   "collected": 113.8,
+   "ok": true
+  },
+  {
+   "id": "2017-10",
+   "player": "Patrick Mahomes",
+   "season": 2018,
+   "field": "anya",
+   "pfr": 8.89,
+   "collected": 8.89,
+   "ok": true
+  },
+  {
+   "id": "2020-22",
+   "player": "Justin Jefferson",
+   "season": 2020,
+   "field": "rec",
+   "pfr": 88,
+   "collected": 88,
+   "ok": true
+  },
+  {
+   "id": "2020-22",
+   "player": "Justin Jefferson",
+   "season": 2020,
+   "field": "rec_yds",
+   "pfr": 1400,
+   "collected": 1400,
+   "ok": true
+  },
+  {
+   "id": "2020-22",
+   "player": "Justin Jefferson",
+   "season": 2020,
+   "field": "targets",
+   "pfr": 125,
+   "collected": 125,
+   "ok": true
+  },
+  {
+   "id": "2021-5",
+   "player": "Ja'Marr Chase",
+   "season": 2021,
+   "field": "rec",
+   "pfr": 81,
+   "collected": 81,
+   "ok": true
+  },
+  {
+   "id": "2021-5",
+   "player": "Ja'Marr Chase",
+   "season": 2021,
+   "field": "rec_yds",
+   "pfr": 1455,
+   "collected": 1455,
+   "ok": true
+  },
+  {
+   "id": "2021-5",
+   "player": "Ja'Marr Chase",
+   "season": 2021,
+   "field": "rec_td",
+   "pfr": 13,
+   "collected": 13,
+   "ok": true
+  },
+  {
+   "id": "2023-177",
+   "player": "Puka Nacua",
+   "season": 2023,
+   "field": "rec",
+   "pfr": 105,
+   "collected": 105,
+   "ok": true
+  },
+  {
+   "id": "2023-177",
+   "player": "Puka Nacua",
+   "season": 2023,
+   "field": "rec_yds",
+   "pfr": 1486,
+   "collected": 1486,
+   "ok": true
+  },
+  {
+   "id": "2023-177",
+   "player": "Puka Nacua",
+   "season": 2023,
+   "field": "targets",
+   "pfr": 160,
+   "collected": 160,
+   "ok": true
+  },
+  {
+   "id": "2018-2",
+   "player": "Saquon Barkley",
+   "season": 2018,
+   "field": "carries",
+   "pfr": 261,
+   "collected": 261,
+   "ok": true
+  },
+  {
+   "id": "2018-2",
+   "player": "Saquon Barkley",
+   "season": 2018,
+   "field": "rush_yds",
+   "pfr": 1307,
+   "collected": 1307,
+   "ok": true
+  },
+  {
+   "id": "2018-2",
+   "player": "Saquon Barkley",
+   "season": 2018,
+   "field": "rush_td",
+   "pfr": 11,
+   "collected": 11,
+   "ok": true
+  },
+  {
+   "id": "2018-2",
+   "player": "Saquon Barkley",
+   "season": 2018,
+   "field": "rec",
+   "pfr": 91,
+   "collected": 91,
+   "ok": true
+  },
+  {
+   "id": "2018-2",
+   "player": "Saquon Barkley",
+   "season": 2018,
+   "field": "rec_yds",
+   "pfr": 721,
+   "collected": 721,
+   "ok": true
+  },
+  {
+   "id": "2017-30",
+   "player": "T. J. Watt",
+   "season": 2021,
+   "field": "sacks",
+   "pfr": 22.5,
+   "collected": 22.5,
+   "ok": true
+  },
+  {
+   "id": "2021-12",
+   "player": "Micah Parsons",
+   "season": 2021,
+   "field": "sacks",
+   "pfr": 13,
+   "collected": 13,
+   "ok": true
+  },
+  {
+   "id": "2017-1",
+   "player": "Myles Garrett",
+   "season": 2023,
+   "field": "sacks",
+   "pfr": 14,
+   "collected": 14,
+   "ok": true
+  },
+  {
+   "id": "2022-4",
+   "player": "Sauce Gardner",
+   "season": 2022,
+   "field": "pd",
+   "pfr": 20,
+   "collected": 20,
+   "ok": true
+  },
+  {
+   "id": "2022-4",
+   "player": "Sauce Gardner",
+   "season": 2022,
+   "field": "def_int",
+   "pfr": 2,
+   "collected": 2,
+   "ok": true
+  },
+  {
+   "id": "2018-7",
+   "player": "Josh Allen",
+   "season": 2020,
+   "field": "pass_yds",
+   "pfr": 4544,
+   "collected": 4544,
+   "ok": true
+  },
+  {
+   "id": "2018-7",
+   "player": "Josh Allen",
+   "season": 2020,
+   "field": "pass_td",
+   "pfr": 37,
+   "collected": 37,
+   "ok": true
+  },
+  {
+   "id": "2018-7",
+   "player": "Josh Allen",
+   "season": 2020,
+   "field": "rush_yds",
+   "pfr": 421,
+   "collected": 421,
+   "ok": true
+  },
+  {
+   "id": "2017-233",
+   "player": "Harrison Butker",
+   "season": 2019,
+   "field": "fgm",
+   "pfr": 34,
+   "collected": 34,
+   "ok": true
+  },
+  {
+   "id": "2017-233",
+   "player": "Harrison Butker",
+   "season": 2019,
+   "field": "fga",
+   "pfr": 38,
+   "collected": 38,
+   "ok": true
+  },
+  {
+   "id": "2017-2",
+   "player": "Mitchell Trubisky",
+   "season": 2017,
+   "field": "gs",
+   "pfr": 12,
+   "collected": 12,
+   "ok": true
+  },
+  {
+   "id": "2017-2",
+   "player": "Mitchell Trubisky",
+   "season": 2017,
+   "field": "qb_wins",
+   "pfr": 4,
+   "collected": 4,
+   "ok": true
+  }
+ ],
+ "careerTotalsVsPfr": {
+  "att": {
+   "pfrField": "pass_attempts",
+   "finished": {
+    "players": 1132,
+    "exact": 1131,
+    "within2pct": 1132,
+    "largest": [
+     {
+      "id": "2017-171",
+      "player": "Nathan Peterman",
+      "pfr": 160.0,
+      "collected": 159
+     },
+     {
+      "id": "2025-94",
+      "player": "Dillon Gabriel",
+      "pfr": 185.0,
+      "collected": 185
+     },
+     {
+      "id": "2025-92",
+      "player": "Jalen Milroe",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-87",
+      "player": "Savion Williams",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-75",
+      "player": "Nick Martin",
+      "pfr": 0.0,
+      "collected": 0
+     }
+    ]
+   },
+   "active": {
+    "players": 1228,
+    "exact": 1206,
+    "within2pct": 1220,
+    "largest": [
+     {
+      "id": "2020-1",
+      "player": "Joe Burrow",
+      "pfr": 2909.0,
+      "collected": 2963
+     },
+     {
+      "id": "2025-40",
+      "player": "Tyler Shough",
+      "pfr": 459.0,
+      "collected": 507
+     },
+     {
+      "id": "2024-12",
+      "player": "Bo Nix",
+      "pfr": 1272.0,
+      "collected": 1314
+     },
+     {
+      "id": "2023-1",
+      "player": "Bryce Young",
+      "pfr": 1510.0,
+      "collected": 1551
+     },
+     {
+      "id": "2024-3",
+      "player": "Drake Maye",
+      "pfr": 910.0,
+      "collected": 947
+     }
+    ]
+   }
+  },
+  "cmp": {
+   "pfrField": "pass_completions",
+   "finished": {
+    "players": 1132,
+    "exact": 1131,
+    "within2pct": 1132,
+    "largest": [
+     {
+      "id": "2017-171",
+      "player": "Nathan Peterman",
+      "pfr": 85.0,
+      "collected": 84
+     },
+     {
+      "id": "2025-94",
+      "player": "Dillon Gabriel",
+      "pfr": 110.0,
+      "collected": 110
+     },
+     {
+      "id": "2025-92",
+      "player": "Jalen Milroe",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-87",
+      "player": "Savion Williams",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-75",
+      "player": "Nick Martin",
+      "pfr": 0.0,
+      "collected": 0
+     }
+    ]
+   },
+   "active": {
+    "players": 1228,
+    "exact": 1207,
+    "within2pct": 1219,
+    "largest": [
+     {
+      "id": "2020-1",
+      "player": "Joe Burrow",
+      "pfr": 1994.0,
+      "collected": 2033
+     },
+     {
+      "id": "2025-40",
+      "player": "Tyler Shough",
+      "pfr": 312.0,
+      "collected": 342
+     },
+     {
+      "id": "2023-1",
+      "player": "Bryce Young",
+      "pfr": 925.0,
+      "collected": 954
+     },
+     {
+      "id": "2019-1",
+      "player": "Kyler Murray",
+      "pfr": 1992.0,
+      "collected": 2019
+     },
+     {
+      "id": "2024-12",
+      "player": "Bo Nix",
+      "pfr": 820.0,
+      "collected": 845
+     }
+    ]
+   }
+  },
+  "pass_yds": {
+   "pfrField": "pass_yards",
+   "finished": {
+    "players": 1132,
+    "exact": 1131,
+    "within2pct": 1131,
+    "largest": [
+     {
+      "id": "2017-171",
+      "player": "Nathan Peterman",
+      "pfr": 712.0,
+      "collected": 691
+     },
+     {
+      "id": "2025-94",
+      "player": "Dillon Gabriel",
+      "pfr": 937.0,
+      "collected": 937
+     },
+     {
+      "id": "2025-92",
+      "player": "Jalen Milroe",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-87",
+      "player": "Savion Williams",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-75",
+      "player": "Nick Martin",
+      "pfr": 0.0,
+      "collected": 0
+     }
+    ]
+   },
+   "active": {
+    "players": 1228,
+    "exact": 1207,
+    "within2pct": 1220,
+    "largest": [
+     {
+      "id": "2020-1",
+      "player": "Joe Burrow",
+      "pfr": 21553.0,
+      "collected": 21981
+     },
+     {
+      "id": "2023-2",
+      "player": "C. J. Stroud",
+      "pfr": 11670.0,
+      "collected": 12017
+     },
+     {
+      "id": "2023-1",
+      "player": "Bryce Young",
+      "pfr": 9230.0,
+      "collected": 9559
+     },
+     {
+      "id": "2025-40",
+      "player": "Tyler Shough",
+      "pfr": 3301.0,
+      "collected": 3587
+     },
+     {
+      "id": "2024-3",
+      "player": "Drake Maye",
+      "pfr": 7255.0,
+      "collected": 7524
+     }
+    ]
+   }
+  },
+  "pass_td": {
+   "pfrField": "pass_tds",
+   "finished": {
+    "players": 1132,
+    "exact": 1132,
+    "within2pct": 1132,
+    "largest": [
+     {
+      "id": "2025-94",
+      "player": "Dillon Gabriel",
+      "pfr": 7.0,
+      "collected": 7
+     },
+     {
+      "id": "2025-92",
+      "player": "Jalen Milroe",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-87",
+      "player": "Savion Williams",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-75",
+      "player": "Nick Martin",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-63",
+      "player": "Omarr Norman-Lott",
+      "pfr": 0.0,
+      "collected": 0
+     }
+    ]
+   },
+   "active": {
+    "players": 1228,
+    "exact": 1210,
+    "within2pct": 1223,
+    "largest": [
+     {
+      "id": "2024-3",
+      "player": "Drake Maye",
+      "pfr": 47.0,
+      "collected": 50
+     },
+     {
+      "id": "2023-2",
+      "player": "C. J. Stroud",
+      "pfr": 65.0,
+      "collected": 67
+     },
+     {
+      "id": "2023-1",
+      "player": "Bryce Young",
+      "pfr": 56.0,
+      "collected": 58
+     },
+     {
+      "id": "2022-262",
+      "player": "Brock Purdy",
+      "pfr": 93.0,
+      "collected": 95
+     },
+     {
+      "id": "2020-53",
+      "player": "Jalen Hurts",
+      "pfr": 115.0,
+      "collected": 117
+     }
+    ]
+   }
+  },
+  "int": {
+   "pfrField": "pass_ints",
+   "finished": {
+    "players": 1132,
+    "exact": 1132,
+    "within2pct": 1132,
+    "largest": [
+     {
+      "id": "2025-94",
+      "player": "Dillon Gabriel",
+      "pfr": 2.0,
+      "collected": 2
+     },
+     {
+      "id": "2025-92",
+      "player": "Jalen Milroe",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-87",
+      "player": "Savion Williams",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-75",
+      "player": "Nick Martin",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-63",
+      "player": "Omarr Norman-Lott",
+      "pfr": 0.0,
+      "collected": 0
+     }
+    ]
+   },
+   "active": {
+    "players": 1228,
+    "exact": 1219,
+    "within2pct": 1226,
+    "largest": [
+     {
+      "id": "2020-6",
+      "player": "Justin Herbert",
+      "pfr": 62.0,
+      "collected": 64
+     },
+     {
+      "id": "2020-1",
+      "player": "Joe Burrow",
+      "pfr": 52.0,
+      "collected": 54
+     },
+     {
+      "id": "2025-1",
+      "player": "Cam Ward",
+      "pfr": 8.0,
+      "collected": 9
+     },
+     {
+      "id": "2024-3",
+      "player": "Drake Maye",
+      "pfr": 24.0,
+      "collected": 25
+     },
+     {
+      "id": "2020-26",
+      "player": "Jordan Love",
+      "pfr": 33.0,
+      "collected": 34
+     }
+    ]
+   }
+  },
+  "carries": {
+   "pfrField": "rush_atts",
+   "finished": {
+    "players": 1132,
+    "exact": 1131,
+    "within2pct": 1132,
+    "largest": [
+     {
+      "id": "2020-5",
+      "player": "Tua Tagovailoa",
+      "pfr": 173.0,
+      "collected": 174
+     },
+     {
+      "id": "2025-94",
+      "player": "Dillon Gabriel",
+      "pfr": 14.0,
+      "collected": 14
+     },
+     {
+      "id": "2025-92",
+      "player": "Jalen Milroe",
+      "pfr": 3.0,
+      "collected": 3
+     },
+     {
+      "id": "2025-87",
+      "player": "Savion Williams",
+      "pfr": 11.0,
+      "collected": 11
+     },
+     {
+      "id": "2025-75",
+      "player": "Nick Martin",
+      "pfr": 0.0,
+      "collected": 0
+     }
+    ]
+   },
+   "active": {
+    "players": 1228,
+    "exact": 1125,
+    "within2pct": 1180,
+    "largest": [
+     {
+      "id": "2025-233",
+      "player": "Kyle Monangai",
+      "pfr": 199.0,
+      "collected": 229
+     },
+     {
+      "id": "2022-41",
+      "player": "Kenneth Walker III",
+      "pfr": 886.0,
+      "collected": 908
+     },
+     {
+      "id": "2021-126",
+      "player": "Chuba Hubbard",
+      "pfr": 930.0,
+      "collected": 950
+     },
+     {
+      "id": "2020-41",
+      "player": "Jonathan Taylor",
+      "pfr": 1617.0,
+      "collected": 1637
+     },
+     {
+      "id": "2017-182",
+      "player": "Aaron Jones",
+      "pfr": 1616.0,
+      "collected": 1636
+     }
+    ]
+   }
+  },
+  "rush_yds": {
+   "pfrField": "rush_yards",
+   "finished": {
+    "players": 1132,
+    "exact": 1132,
+    "within2pct": 1132,
+    "largest": [
+     {
+      "id": "2025-94",
+      "player": "Dillon Gabriel",
+      "pfr": 86.0,
+      "collected": 86
+     },
+     {
+      "id": "2025-92",
+      "player": "Jalen Milroe",
+      "pfr": 4.0,
+      "collected": 4
+     },
+     {
+      "id": "2025-87",
+      "player": "Savion Williams",
+      "pfr": 37.0,
+      "collected": 37
+     },
+     {
+      "id": "2025-75",
+      "player": "Nick Martin",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-63",
+      "player": "Omarr Norman-Lott",
+      "pfr": 0.0,
+      "collected": 0
+     }
+    ]
+   },
+   "active": {
+    "players": 1228,
+    "exact": 1129,
+    "within2pct": 1178,
+    "largest": [
+     {
+      "id": "2022-41",
+      "player": "Kenneth Walker III",
+      "pfr": 3915.0,
+      "collected": 4092
+     },
+     {
+      "id": "2025-233",
+      "player": "Kyle Monangai",
+      "pfr": 961.0,
+      "collected": 1107
+     },
+     {
+      "id": "2023-8",
+      "player": "Bijan Robinson",
+      "pfr": 4259.0,
+      "collected": 4404
+     },
+     {
+      "id": "2021-126",
+      "player": "Chuba Hubbard",
+      "pfr": 3870.0,
+      "collected": 3992
+     },
+     {
+      "id": "2025-179",
+      "player": "Ollie Gordon II",
+      "pfr": 247.0,
+      "collected": 347
+     }
+    ]
+   }
+  },
+  "rush_td": {
+   "pfrField": "rush_tds",
+   "finished": {
+    "players": 1132,
+    "exact": 1132,
+    "within2pct": 1132,
+    "largest": [
+     {
+      "id": "2025-94",
+      "player": "Dillon Gabriel",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-92",
+      "player": "Jalen Milroe",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-87",
+      "player": "Savion Williams",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-75",
+      "player": "Nick Martin",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-63",
+      "player": "Omarr Norman-Lott",
+      "pfr": 0.0,
+      "collected": 0
+     }
+    ]
+   },
+   "active": {
+    "players": 1228,
+    "exact": 1204,
+    "within2pct": 1219,
+    "largest": [
+     {
+      "id": "2022-98",
+      "player": "Brian Robinson Jr.",
+      "pfr": 18.0,
+      "collected": 21
+     },
+     {
+      "id": "2021-35",
+      "player": "Javonte Williams",
+      "pfr": 24.0,
+      "collected": 27
+     },
+     {
+      "id": "2025-233",
+      "player": "Kyle Monangai",
+      "pfr": 6.0,
+      "collected": 8
+     },
+     {
+      "id": "2023-8",
+      "player": "Bijan Robinson",
+      "pfr": 27.0,
+      "collected": 29
+     },
+     {
+      "id": "2022-41",
+      "player": "Kenneth Walker III",
+      "pfr": 31.0,
+      "collected": 33
+     }
+    ]
+   }
+  },
+  "rec": {
+   "pfrField": "receptions",
+   "finished": {
+    "players": 1132,
+    "exact": 1132,
+    "within2pct": 1132,
+    "largest": [
+     {
+      "id": "2025-94",
+      "player": "Dillon Gabriel",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-92",
+      "player": "Jalen Milroe",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-87",
+      "player": "Savion Williams",
+      "pfr": 10.0,
+      "collected": 10
+     },
+     {
+      "id": "2025-75",
+      "player": "Nick Martin",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-63",
+      "player": "Omarr Norman-Lott",
+      "pfr": 0.0,
+      "collected": 0
+     }
+    ]
+   },
+   "active": {
+    "players": 1228,
+    "exact": 1041,
+    "within2pct": 1150,
+    "largest": [
+     {
+      "id": "2020-17",
+      "player": "CeeDee Lamb",
+      "pfr": 591.0,
+      "collected": 608
+     },
+     {
+      "id": "2025-8",
+      "player": "Tetairoa McMillan",
+      "pfr": 82.0,
+      "collected": 96
+     },
+     {
+      "id": "2019-8",
+      "player": "T. J. Hockenson",
+      "pfr": 442.0,
+      "collected": 455
+     },
+     {
+      "id": "2023-163",
+      "player": "Chase Brown",
+      "pfr": 147.0,
+      "collected": 158
+     },
+     {
+      "id": "2020-33",
+      "player": "Tee Higgins",
+      "pfr": 403.0,
+      "collected": 414
+     }
+    ]
+   }
+  },
+  "rec_yds": {
+   "pfrField": "rec_yards",
+   "finished": {
+    "players": 1132,
+    "exact": 1132,
+    "within2pct": 1132,
+    "largest": [
+     {
+      "id": "2025-94",
+      "player": "Dillon Gabriel",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-92",
+      "player": "Jalen Milroe",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-87",
+      "player": "Savion Williams",
+      "pfr": 78.0,
+      "collected": 78
+     },
+     {
+      "id": "2025-75",
+      "player": "Nick Martin",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-63",
+      "player": "Omarr Norman-Lott",
+      "pfr": 0.0,
+      "collected": 0
+     }
+    ]
+   },
+   "active": {
+    "players": 1228,
+    "exact": 1041,
+    "within2pct": 1118,
+    "largest": [
+     {
+      "id": "2025-8",
+      "player": "Tetairoa McMillan",
+      "pfr": 1207.0,
+      "collected": 1399
+     },
+     {
+      "id": "2020-17",
+      "player": "CeeDee Lamb",
+      "pfr": 7725.0,
+      "collected": 7914
+     },
+     {
+      "id": "2020-33",
+      "player": "Tee Higgins",
+      "pfr": 5685.0,
+      "collected": 5842
+     },
+     {
+      "id": "2026-4",
+      "player": "Carnell Tate",
+      "pfr": 123.0,
+      "collected": 268
+     },
+     {
+      "id": "2023-177",
+      "player": "Puka Nacua",
+      "pfr": 4265.0,
+      "collected": 4390
+     }
+    ]
+   }
+  },
+  "rec_td": {
+   "pfrField": "rec_tds",
+   "finished": {
+    "players": 1132,
+    "exact": 1132,
+    "within2pct": 1132,
+    "largest": [
+     {
+      "id": "2025-94",
+      "player": "Dillon Gabriel",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-92",
+      "player": "Jalen Milroe",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-87",
+      "player": "Savion Williams",
+      "pfr": 1.0,
+      "collected": 1
+     },
+     {
+      "id": "2025-75",
+      "player": "Nick Martin",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-63",
+      "player": "Omarr Norman-Lott",
+      "pfr": 0.0,
+      "collected": 0
+     }
+    ]
+   },
+   "active": {
+    "players": 1228,
+    "exact": 1194,
+    "within2pct": 1224,
+    "largest": [
+     {
+      "id": "2025-8",
+      "player": "Tetairoa McMillan",
+      "pfr": 7.0,
+      "collected": 9
+     },
+     {
+      "id": "2022-50",
+      "player": "Tyquan Thornton",
+      "pfr": 5.0,
+      "collected": 7
+     },
+     {
+      "id": "2022-132",
+      "player": "Romeo Doubs",
+      "pfr": 21.0,
+      "collected": 23
+     },
+     {
+      "id": "2021-89",
+      "player": "Nico Collins",
+      "pfr": 25.0,
+      "collected": 27
+     },
+     {
+      "id": "2026-74",
+      "player": "Malachi Fields",
+      "pfr": 0.0,
+      "collected": 1
+     }
+    ]
+   }
+  },
+  "def_int": {
+   "pfrField": "def_ints",
+   "finished": {
+    "players": 154,
+    "exact": 154,
+    "within2pct": 154,
+    "largest": [
+     {
+      "id": "2025-256",
+      "player": "Trikweze Bridges",
+      "pfr": 1.0,
+      "collected": 1
+     },
+     {
+      "id": "2024-24",
+      "player": "Terrion Arnold",
+      "pfr": 1.0,
+      "collected": 1
+     },
+     {
+      "id": "2023-76",
+      "player": "Marte Mapu",
+      "pfr": 3.0,
+      "collected": 3
+     },
+     {
+      "id": "2023-45",
+      "player": "Brian Branch",
+      "pfr": 7.0,
+      "collected": 7
+     },
+     {
+      "id": "2023-252",
+      "player": "Alex Austin",
+      "pfr": 1.0,
+      "collected": 1
+     }
+    ]
+   },
+   "active": {
+    "players": 289,
+    "exact": 273,
+    "within2pct": 289,
+    "largest": [
+     {
+      "id": "2025-84",
+      "player": "Jacob Parrish",
+      "pfr": 2.0,
+      "collected": 3
+     },
+     {
+      "id": "2025-64",
+      "player": "Andrew Mukuba",
+      "pfr": 2.0,
+      "collected": 3
+     },
+     {
+      "id": "2025-174",
+      "player": "Denzel Burke",
+      "pfr": 3.0,
+      "collected": 4
+     },
+     {
+      "id": "2024-45",
+      "player": "Edgerrin Cooper",
+      "pfr": 1.0,
+      "collected": 2
+     },
+     {
+      "id": "2024-40",
+      "player": "Cooper DeJean",
+      "pfr": 2.0,
+      "collected": 3
+     }
+    ]
+   }
+  },
+  "sacks": {
+   "pfrField": "def_sacks",
+   "finished": {
+    "players": 270,
+    "exact": 269,
+    "within2pct": 270,
+    "largest": [
+     {
+      "id": "2020-56",
+      "player": "Raekwon Davis",
+      "pfr": 2.0,
+      "collected": 2.5
+     },
+     {
+      "id": "2025-63",
+      "player": "Omarr Norman-Lott",
+      "pfr": 1.0,
+      "collected": 1
+     },
+     {
+      "id": "2025-51",
+      "player": "Nic Scourton",
+      "pfr": 5.0,
+      "collected": 5
+     },
+     {
+      "id": "2025-43",
+      "player": "Alfred Collins",
+      "pfr": 1.0,
+      "collected": 1
+     },
+     {
+      "id": "2025-41",
+      "player": "T. J. Sanders",
+      "pfr": 1.0,
+      "collected": 1
+     }
+    ]
+   },
+   "active": {
+    "players": 395,
+    "exact": 343,
+    "within2pct": 392,
+    "largest": [
+     {
+      "id": "2023-77",
+      "player": "Byron Young",
+      "pfr": 28.5,
+      "collected": 31.0
+     },
+     {
+      "id": "2024-17",
+      "player": "Dallas Turner",
+      "pfr": 14.5,
+      "collected": 16.5
+     },
+     {
+      "id": "2018-238",
+      "player": "Zach Sieler",
+      "pfr": 35.5,
+      "collected": 37.5
+     },
+     {
+      "id": "2025-77",
+      "player": "Princely Umanmielen",
+      "pfr": 3.5,
+      "collected": 4.5
+     },
+     {
+      "id": "2025-35",
+      "player": "Nick Emmanwori",
+      "pfr": 2.5,
+      "collected": 3.5
+     }
+    ]
+   }
+  },
+  "g": {
+   "pfrField": "games",
+   "finished": {
+    "players": 1132,
+    "exact": 1129,
+    "within2pct": 1130,
+    "largest": [
+     {
+      "id": "2020-237",
+      "player": "BoPete Keyes",
+      "pfr": 18.0,
+      "collected": 13
+     },
+     {
+      "id": "2019-132",
+      "player": "Ugo Amadi",
+      "pfr": 87.0,
+      "collected": 85
+     },
+     {
+      "id": "2019-230",
+      "player": "Quinton Bell",
+      "pfr": 33.0,
+      "collected": 34
+     },
+     {
+      "id": "2025-94",
+      "player": "Dillon Gabriel",
+      "pfr": 10.0,
+      "collected": 10
+     },
+     {
+      "id": "2025-92",
+      "player": "Jalen Milroe",
+      "pfr": 3.0,
+      "collected": 3
+     }
+    ]
+   },
+   "active": {
+    "players": 1228,
+    "exact": 166,
+    "within2pct": 1227,
+    "largest": [
+     {
+      "id": "2024-164",
+      "player": "Jaylin Simpson",
+      "pfr": 3.0,
+      "collected": 5
+     },
+     {
+      "id": "2026-99",
+      "player": "Julian Neal",
+      "pfr": 3.0,
+      "collected": 4
+     },
+     {
+      "id": "2026-95",
+      "player": "Eli Raridon",
+      "pfr": 2.0,
+      "collected": 3
+     },
+     {
+      "id": "2026-94",
+      "player": "Chris Bell",
+      "pfr": 3.0,
+      "collected": 4
+     },
+     {
+      "id": "2026-92",
+      "player": "Jaishawn Barham",
+      "pfr": 3.0,
+      "collected": 4
+     }
+    ]
+   }
+  },
+  "pro_bowl": {
+   "pfrField": "probowls",
+   "finished": {
+    "players": 1132,
+    "exact": 1132,
+    "within2pct": 1132,
+    "largest": [
+     {
+      "id": "2025-94",
+      "player": "Dillon Gabriel",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-92",
+      "player": "Jalen Milroe",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-87",
+      "player": "Savion Williams",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-75",
+      "player": "Nick Martin",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-63",
+      "player": "Omarr Norman-Lott",
+      "pfr": 0.0,
+      "collected": 0
+     }
+    ]
+   },
+   "active": {
+    "players": 1228,
+    "exact": 1228,
+    "within2pct": 1228,
+    "largest": [
+     {
+      "id": "2026-99",
+      "player": "Julian Neal",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2026-95",
+      "player": "Eli Raridon",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2026-94",
+      "player": "Chris Bell",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2026-92",
+      "player": "Jaishawn Barham",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2026-91",
+      "player": "Trey Zuhn III",
+      "pfr": 0.0,
+      "collected": 0
+     }
+    ]
+   }
+  },
+  "all_pro": {
+   "pfrField": "allpro",
+   "finished": {
+    "players": 1132,
+    "exact": 1132,
+    "within2pct": 1132,
+    "largest": [
+     {
+      "id": "2025-94",
+      "player": "Dillon Gabriel",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-92",
+      "player": "Jalen Milroe",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-87",
+      "player": "Savion Williams",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-75",
+      "player": "Nick Martin",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2025-63",
+      "player": "Omarr Norman-Lott",
+      "pfr": 0.0,
+      "collected": 0
+     }
+    ]
+   },
+   "active": {
+    "players": 1228,
+    "exact": 1228,
+    "within2pct": 1228,
+    "largest": [
+     {
+      "id": "2026-99",
+      "player": "Julian Neal",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2026-95",
+      "player": "Eli Raridon",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2026-94",
+      "player": "Chris Bell",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2026-92",
+      "player": "Jaishawn Barham",
+      "pfr": 0.0,
+      "collected": 0
+     },
+     {
+      "id": "2026-91",
+      "player": "Trey Zuhn III",
+      "pfr": 0.0,
+      "collected": 0
+     }
+    ]
+   }
+  },
+  "weighted_av": {
+   "pfrField": "w_av",
+   "finished": {
+    "players": 1132,
+    "exact": 1132,
+    "within2pct": 1132,
+    "largest": [
+     {
+      "player": "Zach Cunningham",
+      "pfr": 36.0,
+      "collected": 37
+     },
+     {
+      "player": "Thayer Munford",
+      "pfr": 11.0,
+      "collected": 10
+     },
+     {
+      "player": "Shaquille Quarterman",
+      "pfr": 5.0,
+      "collected": 4
+     },
+     {
+      "player": "Nyheim Hines",
+      "pfr": 25.0,
+      "collected": 26
+     },
+     {
+      "player": "Noah Brown",
+      "pfr": 19.0,
+      "collected": 18
+     }
+    ]
+   },
+   "active": {
+    "players": 0,
+    "exact": 0,
+    "within2pct": 0,
+    "largest": []
+   }
+  }
+ },
+ "identity": {
+  "pfrMatched": 2569,
+  "gsisFromDraft": 2561,
+  "gsisFromCrosswalk": 0,
+  "gsisMissing": [
+   "2017-246",
+   "2020-224",
+   "2020-230",
+   "2023-227",
+   "2024-108",
+   "2025-240",
+   "2026-222",
+   "2026-245"
+  ],
+  "nicknameMatches": [
+   {
+    "id": "2017-187",
+    "archive": "Mike Tyson",
+    "pfr": "Michael Tyson"
+   },
+   {
+    "id": "2019-247",
+    "archive": "Bisi Johnson",
+    "pfr": "Olabisi Johnson"
+   },
+   {
+    "id": "2020-177",
+    "archive": "Mike Danna",
+    "pfr": "Michael Danna"
+   },
+   {
+    "id": "2020-237",
+    "archive": "BoPete Keyes",
+    "pfr": "Thakarius Keyes"
+   },
+   {
+    "id": "2021-51",
+    "archive": "Sam Cosmi",
+    "pfr": "Samuel Cosmi"
+   },
+   {
+    "id": "2022-192",
+    "archive": "Drew Ogletree",
+    "pfr": "Andrew Ogletree"
+   },
+   {
+    "id": "2023-44",
+    "archive": "JuJu Brents",
+    "pfr": "Julius Brents"
+   },
+   {
+    "id": "2023-154",
+    "archive": "Olu Oluwatimi",
+    "pfr": "Olusegun Oluwatimi"
+   },
+   {
+    "id": "2023-182",
+    "archive": "Tre Tomlinson",
+    "pfr": "Tre'Vius Tomlinson"
+   },
+   {
+    "id": "2024-54",
+    "archive": "Mike Hall Jr.",
+    "pfr": "Michael Hall"
+   },
+   {
+    "id": "2024-77",
+    "archive": "DJ Glaze",
+    "pfr": "Delmar Glaze"
+   },
+   {
+    "id": "2024-233",
+    "archive": "Nate Thomas",
+    "pfr": "Nathan Thomas"
+   },
+   {
+    "id": "2025-134",
+    "archive": "Que Robinson",
+    "pfr": "Quandarrius Robinson"
+   }
+  ]
+ },
+ "advancedRowConflicts": 17,
+ "failures": []
+}
