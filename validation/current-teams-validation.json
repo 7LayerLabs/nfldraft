@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "asOf": "2026-10-06",
+  "players": 2569,
+  "teams": 32,
+  "privateSourceEvidenceVerified": true,
+  "incompleteFetchPreservesPublication": true,
+  "leagueStatuses": {
+    "rostered": 1583,
+    "free-agent": 851,
+    "unrostered/unknown": 10,
+    "inactive": 104,
+    "retired": 17,
+    "deceased": 4
+  },
+  "datedRegressionExamples": [
+    "2017-8",
+    "2017-10",
+    "2018-1",
+    "2018-3",
+    "2018-44",
+    "2017-32",
+    "2017-249",
+    "2019-15",
+    "2019-79",
+    "2019-188",
+    "2021-107",
+    "2021-154",
+    "2023-70",
+    "2023-77",
+    "2022-24"
+  ],
+  "unknownStatuses": [
+    {
+      "id": "2017-5",
+      "name": "Corey Davis"
+    },
+    {
+      "id": "2017-246",
+      "name": "Jordan Carrell"
+    },
+    {
+      "id": "2018-97",
+      "name": "Mason Cole"
+    },
+    {
+      "id": "2020-79",
+      "name": "Jabari Zuniga"
+    },
+    {
+      "id": "2020-224",
+      "name": "Cole McDonald"
+    },
+    {
+      "id": "2020-230",
+      "name": "Dustin Woodard"
+    },
+    {
+      "id": "2023-227",
+      "name": "Raymond Vohasek"
+    },
+    {
+      "id": "2025-240",
+      "name": "Kaden Prather"
+    },
+    {
+      "id": "2026-222",
+      "name": "Tyre West"
+    },
+    {
+      "id": "2026-245",
+      "name": "Jam Miller"
+    }
+  ]
+}

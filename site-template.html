@@ -76,18 +76,23 @@
     .round-button[aria-pressed="true"] { background:var(--ink); color:var(--bg); border-color:var(--ink); font-weight:600; }
     .result-count { color:var(--secondary); white-space:nowrap; font-size:12px; }
     .table-scroll { overflow-x:auto; }
-    .draft-table { width:100%; border-collapse:collapse; text-align:left; min-width:940px; table-layout:fixed; }
+    .draft-table { width:100%; border-collapse:collapse; text-align:left; min-width:1120px; table-layout:fixed; }
     .draft-table th,.draft-table td { padding:17px 16px; vertical-align:middle; }
     .draft-table th:first-child,.draft-table td:first-child { padding-left:28px; }
     .draft-table th:last-child,.draft-table td:last-child { padding-right:28px; }
     .draft-table thead { background:var(--raised); }
     .draft-table thead th { color:var(--secondary); font-size:12px; font-weight:500; padding-top:13px; padding-bottom:13px; }
-    .draft-table col:nth-child(1) { width:7%; }
-    .draft-table col:nth-child(2) { width:7%; }
-    .draft-table col:nth-child(3) { width:30%; }
-    .draft-table col:nth-child(4) { width:24%; }
-    .draft-table col:nth-child(5) { width:10%; }
-    .draft-table col:nth-child(6) { width:22%; }
+    .draft-table col:nth-child(1) { width:5%; }
+    .draft-table col:nth-child(2) { width:5%; }
+    .draft-table col:nth-child(3) { width:22%; }
+    .draft-table col:nth-child(4) { width:22%; }
+    .draft-table col:nth-child(5) { width:7%; }
+    .draft-table col:nth-child(6) { width:18%; }
+    .draft-table col:nth-child(7) { width:21%; }
+    .current-team-link { text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:4px; }
+    .current-team-link:hover { color:var(--ink); text-decoration-color:var(--secondary); }
+    .roster-note { color:var(--secondary); font-size:12px; margin:0 0 14px; line-height:1.6; }
+    .roster-note a { text-decoration:underline; text-underline-offset:3px; }
     .draft-table tbody tr.pick-row { border-bottom:1px solid var(--line); }
     .draft-table tbody tr.pick-row:last-child { border-bottom:none; }
     .draft-table tbody tr.pick-row:hover { background:var(--hover); }
@@ -119,7 +124,7 @@
     @media(max-width:380px) { .wrap { padding:0 12px; } h1 { font-size:44px; } .summary-count { display:none; } .theme-button { padding:8px 10px; } .year-summary { padding:17px 16px; } .toolbar { padding:15px 16px 10px; } .round-toolbar { padding-left:16px; padding-right:16px; } .round-list { gap:4px; } .round-button { padding:6px 8px; } }
     @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .chevron { transition:none; } }
   </style>
-  <link href="profile-ui.css" rel="stylesheet">
+  <link href="profile-ui.css?v=__PROFILE_STYLE_VERSION__" rel="stylesheet">
 </head>
 <body>
   <header class="masthead">
@@ -137,16 +142,23 @@
       <div class="coverage"><strong>2017—2026</strong><span>2,569 selections across 10 drafts</span></div>
     </section>
     <nav class="year-navigation" id="year-navigation" aria-label="Choose a draft year"></nav>
-    <div class="archive-heading"><h2>Draft results <span class="profile-link-hint">Select a player to open their profile</span></h2><span>Overall pick numbers · Team names at the time of selection</span></div>
+    <div class="archive-heading"><h2>Draft results <span class="profile-link-hint">Select a player to open their profile</span></h2><span>Overall pick numbers · Draft team names at selection</span></div>
+    <p class="roster-note" id="roster-note"></p>
     <div id="draft-years"></div>
     <div class="page-footer"><span>All seven rounds, including compensatory selections.</span><a href="nfl-drafts-2017-2026.csv" download>Download all picks as CSV</a><a href="player-profiles-2017-2026.zip" download>Download all player profiles (ZIP)</a></div>
     <span class="sr-only" id="archive-status" aria-live="polite"></span>
   </main>
   <main class="wrap player-profile" id="profile-view" hidden aria-label="Player profile" tabindex="-1"></main>
   <script type="application/json" id="draft-data">__NFL_DRAFT_DATA__</script>
+  <script type="application/json" id="current-team-data">__NFL_CURRENT_TEAMS__</script>
   <script>
   (() => {
     const data = JSON.parse(document.getElementById('draft-data').textContent);
+    const currentTeams = JSON.parse(document.getElementById('current-team-data').textContent);
+    function currentTeamLabel(entry) { return entry?.team || '-- '+(entry?.statusLabel || 'Status unconfirmed'); }
+    const rosterNote = document.getElementById('roster-note');
+    rosterNote.append('Current teams and league statuses checked '+currentTeams.asOf+'. Includes listed reserve and practice-squad players. ');
+    const rosterDownload = document.createElement('a'); rosterDownload.href='data/current-teams.json'; rosterDownload.textContent='Roster sources & snapshot'; rosterDownload.download='current-teams.json'; rosterNote.append(rosterDownload);
     const years = Object.keys(data).sort((a,b) => Number(b)-Number(a));
     const sections = new Map();
     const states = new Map();
@@ -168,7 +180,7 @@
     function renderRows(year) {
       const state=states.get(year);
       const search=state.search.trim().toLocaleLowerCase();
-      const rows=data[year].filter(r => (!state.round || r[0]===state.round) && (!state.team || r[2]===state.team) && (!state.position || r[5]===state.position) && (!search || [r[1],r[2],r[3],r[4],r[5],r[6]].join(' ').toLocaleLowerCase().includes(search)));
+      const rows=data[year].filter(r => (!state.round || r[0]===state.round) && (!state.team || r[2]===state.team) && (!state.position || r[5]===state.position) && (!search || [r[1],r[2],r[3],r[4],r[5],r[6],currentTeamLabel(currentTeams.players[year+'-'+r[1]])].join(' ').toLocaleLowerCase().includes(search)));
       state.body.replaceChildren();
       let currentRound=0;
       const fragment=document.createDocumentFragment();
@@ -177,7 +189,7 @@
         if(round!==currentRound) {
           currentRound=round;
           const row=node('tr','round-divider',null,fragment);
-          const th=node('th','',null,row); th.colSpan=6; th.scope='rowgroup';
+          const th=node('th','',null,row); th.colSpan=7; th.scope='rowgroup';
           node('span','round-divider-label','Round '+round,th);
           const group=rows.filter(x=>x[0]===round);
           node('span','round-divider-meta',group.length+' selections · Picks '+group[0][1]+'–'+group.at(-1)[1],th);
@@ -198,6 +210,14 @@
         playerLink.setAttribute('aria-label','Open '+player+' player profile');
         node('span','position',position,node('td','',null,row));
         node('td','college-name',college,row);
+        const membership=currentTeams.players[year+'-'+pick];
+        const currentCell=node('td','current-team',null,row);
+        const sourceURL=membership?.team?membership.sourceUrl:(membership?.statusSourceUrl || membership?.sourceUrl);
+        const currentLabel=currentTeamLabel(membership);
+        if(sourceURL && /^https:\/\//.test(sourceURL)) {
+          const link=node('a','current-team-link',currentLabel,currentCell);link.href=sourceURL;link.target='_blank';link.rel='noopener noreferrer';
+          link.setAttribute('aria-label',player+' current team or league status: '+currentLabel+'; open source');
+        } else node('span','',currentLabel,currentCell);
       });
       state.body.appendChild(fragment);
       state.empty.hidden=rows.length>0;
@@ -231,14 +251,14 @@
         state.roundButtons.set(round,button); button.addEventListener('click',()=>{state.round=round; renderRows(year);});
       }
       state.result=node('span','result-count','',roundToolbar);
-      node('p','mobile-scroll-note','Scroll horizontally to see all six columns.',content);
+      node('p','mobile-scroll-note','Scroll horizontally to see all seven columns.',content);
       const scroll=node('div','table-scroll',null,content);
       scroll.setAttribute('role','region'); scroll.setAttribute('aria-label',year+' draft selections'); scroll.tabIndex=0;
       state.table=node('table','draft-table',null,scroll);
       node('caption','sr-only',year+' NFL Draft selections, sorted by overall pick',state.table);
-      const colgroup=node('colgroup','',null,state.table); for(let i=0;i<6;i++) node('col','',null,colgroup);
+      const colgroup=node('colgroup','',null,state.table); for(let i=0;i<7;i++) node('col','',null,colgroup);
       const head=state.table.createTHead().insertRow();
-      ['Round','Pick','Team (via)','Selection','Position','College'].forEach(label=>{const th=node('th','',label,head); th.scope='col';});
+      ['Round','Pick','Team (via)','Selection','Position','College','Current team'].forEach(label=>{const th=node('th','',label,head); th.scope='col';});
       state.body=state.table.createTBody();
       state.empty=node('div','empty-state',null,content); state.empty.hidden=true;
       node('strong','','No matching picks',state.empty); node('span','','Try a different search or clear the filters.',state.empty);
@@ -276,7 +296,7 @@
       section.addEventListener('toggle',()=>{ if(section.open) createContent(year,content); syncSelection(); });
     });
     openYear('2026',false);
-    window.NFLDraftArchive={data,teams,openYear};
+    window.NFLDraftArchive={data,teams,openYear,currentTeams,currentTeamLabel};
     const themeToggle=document.getElementById('theme-toggle');
     function setTheme(theme) {
       document.documentElement.dataset.theme=theme;
@@ -288,6 +308,6 @@
     themeToggle.addEventListener('click',()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
   })();
   </script>
-  <script src="profile-ui.js"></script>
+  <script src="profile-ui.js?v=__PROFILE_SCRIPT_VERSION__"></script>
 </body>
 </html>

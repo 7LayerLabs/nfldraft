@@ -139,3 +139,20 @@ Enrich every one of the 2,569 drafted players from 2017–2026. Each player open
 - [x] Change dropdown label OT to T and place OLB directly after LB, retaining the underlying position values for filtering.
 - [x] Rebuild localhost, verify T/OLB filtering and order, and push to GitHub.
 - Review: 2026 dropdown shows T and LB followed immediately by OLB; T returned 22 tackles and OLB returned five outside linebackers. Underlying source positions remain intact.
+
+## Current NFL team and league status
+### Plan (requested by Derek; push to existing GitHub repository when complete)
+- [x] Collect current rosters from all 32 NFL and ESPN teams, including reserve/practice-squad statuses; join draft IDs conservatively and report ambiguities.
+- [x] Identify supported free-agent/retired/unsigned statuses without inferring retirement from missing roster membership.
+- [x] Add Current team after College, source links and snapshot date; preserve drafted team and original draft data.
+- [x] Include current membership/status in profiles, CSV and JSON/ZIP exports, with portable refresh/build instructions.
+- [x] Validate identities and active/traded/retired/unrostered regression cases, all ten years' seven columns and 320px browser layout.
+- [x] Push completed app/data to GitHub, verify the remote commit and record review.
+
+### Review
+- Snapshot checked 2026-10-06: 1,583 rostered, 851 free agents, 104 Inactive, 17 confirmed Retired, four Deceased, ten Status unconfirmed. No explicit Unsigned records were returned; no status is invented to fill that category.
+- All 32 NFL and ESPN rosters reconcile with zero ambiguous joins/provider disagreements. Includes 138 drafted practice-squad players and supported reserve/IR/PUP memberships. Released/terminated rows and historical athlete team fields do not assign a current team.
+- Twenty-one primary status reports are curated; comeback cases are reconciled with current rosters. Incomplete-source retrieval preserves the prior publication.
+- All 2,569 profiles and dated CSV rows match the roster snapshot; the complete ZIP includes current-teams.json. Existing identities, college statistics and 57,440 workout observations remain validated.
+- Browser checks passed every year's complete counts and nonempty seventh column, sourced retirement/free-agent labels, profile current status, filters/search and mobile horizontal containment. Asset content fingerprints prevent existing tabs from retaining old profile scripts.
+- Public reports and refresh instructions are included. Private source responses and anonymous tokens stay outside the repository. Final app/data pushed to 7LayerLabs/nfldraft main branch.

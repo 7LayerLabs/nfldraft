@@ -1,5 +1,6 @@
 """Audit all published identities, measurements, source provenance and college cutoffs."""
 import json
+import csv
 import math
 from collections import Counter
 from pathlib import Path
@@ -7,6 +8,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 drafts = json.loads((ROOT / 'drafts.json').read_text(encoding='utf-8'))
 expected = {f'{year}-{row[1]}': (int(year), row) for year, rows in drafts.items() for row in rows}
+current_teams = json.loads((ROOT / 'local' / 'data' / 'current-teams.json').read_text(encoding='utf-8'))
+assert set(current_teams['players']) == set(expected)
+with (ROOT / 'local' / 'nfl-drafts-2017-2026.csv').open(encoding='utf-8-sig', newline='') as csv_file:
+    current_csv = list(csv.DictReader(csv_file))
+assert len(current_csv) == len(expected)
+for row in current_csv:
+    membership = current_teams['players'][f"{row['Year']}-{row['Pick (overall)']}"]
+    assert row['Current team'] == (membership.get('team') or '-- '+(membership.get('statusLabel') or 'Status unconfirmed'))
+    assert row['Current team/status as of'] == current_teams['asOf']
 files = {file.stem: file for file in (ROOT / 'local' / 'data' / 'profiles').glob('*.json')}
 assert set(files) == set(expected), 'Every selection must have exactly one published file'
 college_ids = {}
@@ -26,6 +36,7 @@ for pid, path in files.items():
     year, row = expected[pid]
     assert [profile[k] for k in ('round','pick','team','via','name','position','college')] == row[:7], pid
     assert profile['id'] == pid and profile['year'] == year
+    assert profile['currentTeam'] == {**current_teams['players'][pid], 'asOf': current_teams['asOf']}, pid
     workout = profile['workouts']
     nfl_id = workout.get('nflPersonId')
     if nfl_id:

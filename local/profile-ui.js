@@ -2,7 +2,7 @@
   'use strict';
   const archiveAPI = window.NFLDraftArchive;
   if (!archiveAPI) return;
-  const { data, teams, openYear } = archiveAPI;
+  const { data, teams, openYear, currentTeams, currentTeamLabel } = archiveAPI;
   const archive = document.getElementById('archive-view');
   const view = document.getElementById('profile-view');
   const records = new Map();
@@ -271,6 +271,11 @@
     el('div','pick-caption','Overall pick',pick); el('div','pick-display','#'+record.pick,pick); el('div','draft-caption',record.year+' draft · Round '+record.round,pick);
     const team=el('p','profile-team-line',null,view); el('strong','',record.team,team);
     if(record.via) el('span','',' · Selection acquired via '+record.via,team);
+    const membership=currentTeams.players[record.id];
+    const current=el('p','profile-team-line profile-current-team',null,view);
+    el('span','','Current team: ',current);
+    sourceLink(currentTeamLabel(membership),membership?.team?membership.sourceUrl:(membership?.statusSourceUrl || membership?.sourceUrl),current,'profile-read-more');
+    el('span','',' · Checked '+currentTeams.asOf,current);
     const nav=el('nav','profile-section-nav',null,view); nav.setAttribute('aria-label','Player profile sections');
     [['measurements','Measurements'],['college','College career'],['scouting','Scouting'],['sources','Sources']].forEach(([id,label])=>{
       const link=localLink(label,'#'+id,nav);
@@ -380,6 +385,9 @@
   function renderSources(profile,record) {
     const footer=el('section','profile-sources',null,view);footer.id='sources';el('h2','','Sources & coverage',footer);
     const all=[...(profile.workouts?.sources || []),...(profile.collegeStats?.sources || [])];
+    const membership=currentTeams.players[record.id];
+    if(membership?.sourceUrl)all.push({label:'Current NFL roster / player record',url:membership.sourceUrl});
+    if(membership?.statusSourceUrl)all.push({label:'Current league status',url:membership.statusSourceUrl});
     const scouting=profile.workouts?.scouting || profile.scouting;
     if(scouting?.sourceUrl)all.push({label:'Published scouting report'+(scouting.author?' — '+scouting.author:''),url:scouting.sourceUrl});
     if(profile.collegeStats?.sourceUrl)all.push({label:'College statistical record',url:profile.collegeStats.sourceUrl});

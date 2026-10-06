@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "notes": "Primary team/NFL announcements. Reconcile with newer live roster membership to handle comeback. Deceased overrides always win.",
+  "profiles": {
+    "2017-249": {
+      "name": "Chris Carson",
+      "leagueStatus": "retired",
+      "statusLabel": "Retired",
+      "sourceUrl": "https://www.nfl.com/news/seahawks-rb-chris-carson-retiring-after-five-seasons-due-to-neck-injury",
+      "sourcePublishedAt": "2022-07-26T18:11:54.092Z",
+      "sourcePublishedDate": "2022-07-26",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Retiring after five NFL seasons due to neck injury."
+    },
+    "2017-32": {
+      "name": "Ryan Ramczyk",
+      "leagueStatus": "retired",
+      "statusLabel": "Retired",
+      "sourceUrl": "https://www.neworleanssaints.com/news/new-orleans-saints-right-tackle-ryan-ramczyk-announces-retirement-from-nfl",
+      "sourcePublishedAt": "2025-04-18T00:42:06.578Z",
+      "sourcePublishedDate": "2025-04-18",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Announced retirement from NFL."
+    },
+    "2017-119": {
+      "name": "Tarik Cohen",
+      "leagueStatus": "retired",
+      "statusLabel": "Retired",
+      "sourceUrl": "https://www.newyorkjets.com/news/tarik-cohen-retirement-nfl-jets-08-01-2024",
+      "sourcePublishedAt": "2024-08-01T20:21:07.912Z",
+      "sourcePublishedDate": "2024-08-01",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Announced retirement from football."
+    },
+    "2017-199": {
+      "name": "Chase Roullier",
+      "leagueStatus": "retired",
+      "statusLabel": "Retired",
+      "sourceUrl": "https://www.commanders.com/news/chase-roullier-announces-retirement",
+      "sourcePublishedAt": "2023-07-05T18:57:18.289Z",
+      "sourcePublishedDate": "2023-07-05",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Announced retirement on Instagram."
+    },
+    "2018-19": {
+      "name": "Leighton Vander Esch",
+      "leagueStatus": "retired",
+      "statusLabel": "Retired",
+      "sourceUrl": "https://www.dallascowboys.com/news/lve-pens-emotional-retirement-letter-to-cowboys",
+      "sourcePublishedAt": "2024-03-18T17:45:00Z",
+      "sourcePublishedDate": "2024-03-18",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Medically retiring from the NFL."
+    },
+    "2018-27": {
+      "name": "Rashaad Penny",
+      "leagueStatus": "retired",
+      "statusLabel": "Retired",
+      "sourceUrl": "https://www.panthers.com/news/panthers-place-running-back-rashaad-penny-on-reserve-retired",
+      "sourcePublishedAt": "2024-07-30T13:34:48.399Z",
+      "sourcePublishedDate": "2024-07-30",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Placed on reserve/retired."
+    },
+    "2018-31": {
+      "name": "Sony Michel",
+      "leagueStatus": "retired",
+      "statusLabel": "Retired",
+      "sourceUrl": "https://www.nfl.com/news/rams-rb-sony-michel-retiring-after-five-nfl-seasons",
+      "sourcePublishedAt": "2023-07-30T01:44:32.45Z",
+      "sourcePublishedDate": "2023-07-30",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Retired after five NFL seasons."
+    },
+    "2018-50": {
+      "name": "Connor Williams",
+      "leagueStatus": "retired",
+      "statusLabel": "Retired",
+      "sourceUrl": "https://www.nfl.com/news/seahawks-center-connor-williams-retires-from-nfl-midway-through-seventh-season",
+      "sourcePublishedAt": "2024-11-15T21:54:38.964Z",
+      "sourcePublishedDate": "2024-11-15",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Retired midway through seventh season."
+    },
+    "2018-18": {
+      "name": "Jaire Alexander",
+      "leagueStatus": "retired",
+      "statusLabel": "Retired",
+      "sourceUrl": "https://www.philadelphiaeagles.com/news/eagles-jakorian-bennett-injured-reserve-jaire-alexander-retired",
+      "sourcePublishedAt": "2025-11-12T15:00:07.627Z",
+      "sourcePublishedDate": "2025-11-12",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Placed on reserve/retired."
+    },
+    "2018-20": {
+      "name": "Frank Ragnow",
+      "leagueStatus": "retired",
+      "statusLabel": "Retired",
+      "sourceUrl": "https://www.nfl.com/news/ex-lions-center-frank-ragnow-reflects-on-abrupt-retirement-failed-comeback-everything-happens-for-a-reason",
+      "sourcePublishedAt": "2026-06-15T10:58:19.525Z",
+      "sourcePublishedDate": "2026-06-15",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Retirement maintained after failed comeback."
+    },
+    "2019-109": {
+      "name": "Khari Willis",
+      "leagueStatus": "retired",
+      "statusLabel": "Retired",
+      "sourceUrl": "https://www.nfl.com/news/colts-safety-khari-willis-retires-after-three-seasons",
+      "sourcePublishedAt": "2022-06-15T18:56:07.444Z",
+      "sourcePublishedDate": "2022-06-15",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Announced retirement after three seasons."
+    },
+    "2019-162": {
+      "name": "Cameron Smith",
+      "leagueStatus": "retired",
+      "statusLabel": "Retired",
+      "sourceUrl": "https://www.nfl.com/news/vikings-lb-cam-smith-who-returned-from-heart-surgery-announces-retirement",
+      "sourcePublishedAt": "2021-08-19T01:31:35.088Z",
+      "sourcePublishedDate": "2021-08-19",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Announced retirement after returning from heart surgery."
+    },
+    "2019-31": {
+      "name": "Kaleb McGary",
+      "leagueStatus": "retired",
+      "statusLabel": "Retired",
+      "sourceUrl": "https://www.nfl.com/news/kaleb-mcgary-falcons-rt-retirement-seven-seasons",
+      "sourcePublishedAt": "2026-04-08T19:47:38.659Z",
+      "sourcePublishedDate": "2026-04-08",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Retired after seven NFL seasons."
+    },
+    "2020-142": {
+      "name": "Antonio Gandy-Golden",
+      "leagueStatus": "retired",
+      "statusLabel": "Retired",
+      "sourceUrl": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-thursday-july-28",
+      "sourcePublishedAt": "2022-07-28T15:43:41.153Z",
+      "sourcePublishedDate": "2022-07-28",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Antonio Gandy-Golden decided to retire from football."
+    },
+    "2021-161": {
+      "name": "Tommy Doyle",
+      "leagueStatus": "retired",
+      "statusLabel": "Retired",
+      "sourceUrl": "https://www.buffalobills.com/news/bills-ol-tommy-doyle-medically-retires-from-the-nfl",
+      "sourcePublishedAt": "2025-02-14T20:41:00Z",
+      "sourcePublishedDate": "2025-02-14",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Medically retired from the NFL."
+    },
+    "2021-32": {
+      "name": "Joe Tryon-Shoyinka",
+      "leagueStatus": "retired",
+      "statusLabel": "Retired",
+      "sourceUrl": "https://www.philadelphiaeagles.com/news/eagles-sign-erik-ezukanma-shaun-wade",
+      "sourcePublishedAt": "2026-06-16T21:25:07.477Z",
+      "sourcePublishedDate": "2026-06-16",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Joe Tryon-Shoyinka placed on reserve/retired."
+    },
+    "2024-171": {
+      "name": "Jordan Travis",
+      "leagueStatus": "retired",
+      "statusLabel": "Retired",
+      "sourceUrl": "https://www.nfl.com/news/jets-qb-jordan-travis-retiring-after-consultation-with-medical-experts",
+      "sourcePublishedAt": "2025-04-30T18:40:08.354Z",
+      "sourcePublishedDate": "2025-04-30",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Medically advised to retire; reserve/retired designation."
+    },
+    "2019-85": {
+      "name": "Jaylon Ferguson",
+      "leagueStatus": "deceased",
+      "statusLabel": "Deceased",
+      "sourceUrl": "https://www.baltimoreravens.com/news/jaylon-ferguson-passing",
+      "sourcePublishedAt": "2022-06-22T21:30:00Z",
+      "sourcePublishedDate": "2022-06-22",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Ravens mourn passing of Jaylon Ferguson."
+    },
+    "2019-15": {
+      "name": "Dwayne Haskins",
+      "leagueStatus": "deceased",
+      "statusLabel": "Deceased",
+      "sourceUrl": "https://www.steelers.com/news/dwayne-haskins-1997-2022",
+      "sourcePublishedAt": "2022-04-11T19:01:00Z",
+      "sourcePublishedDate": "2022-04-11",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Dwayne Haskins died in a tragic accident."
+    },
+    "2020-31": {
+      "name": "Jeff Gladney",
+      "leagueStatus": "deceased",
+      "statusLabel": "Deceased",
+      "sourceUrl": "https://www.azcardinals.com/news/cardinals-coping-after-death-of-teammate-jeff-gladney",
+      "sourcePublishedAt": "2022-06-01T22:18:27.381Z",
+      "sourcePublishedDate": "2022-06-01",
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Team confirms Jeff Gladney death."
+    },
+    "2024-108": {
+      "name": "Khyree Jackson",
+      "leagueStatus": "deceased",
+      "statusLabel": "Deceased",
+      "sourceUrl": "https://www.vikings.com/team/khyree-jackson",
+      "sourcePublishedAt": null,
+      "sourcePublishedDate": null,
+      "reviewedAsOf": "2026-10-06",
+      "evidenceSummary": "Team memorial confirms Khyree Jackson passed away."
+    }
+  }
+}

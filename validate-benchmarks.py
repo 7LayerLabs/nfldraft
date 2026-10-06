@@ -52,6 +52,6 @@ assert wr['n'] == 221 and 89.9 <= percentile <= 90.1
 with ZipFile(ROOT / 'local' / 'player-profiles-2017-2026.zip') as archive:
     assert archive.testzip() is None
     assert len([n for n in archive.namelist() if n.startswith('profiles/') and n.endswith('.json')]) == 2569
-    for name in ('measurement-definitions.json', 'measurement-benchmarks.json', 'coverage.json'):
+    for name in ('measurement-definitions.json', 'measurement-benchmarks.json', 'coverage.json', 'current-teams.json'):
         assert archive.read(name) == (DATA / name).read_bytes()
 print(f'Validated {count} positional distributions, official-combine eligibility, WR 4.34 percentile and full profile ZIP.')

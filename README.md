@@ -29,6 +29,27 @@ College production comprises 2,057 ESPN records, 54 NFL college-biography fallba
 
 Download the complete draft CSV, each player JSON, or the ZIP containing all profiles, coverage, measurement definitions and positional distributions. Published JSON files preserve individual observations and source links. Unpublished private-workout results cannot be recovered; the app does not infer them.
 
+## Current teams and league status
+
+The **Current team** column follows College and is separate from the team that drafted the player. The page displays the roster snapshot date and links each current team/status to its source. Profiles, the CSV and the complete profile ZIP include the same dated membership data; `local/data/current-teams.json` contains the full join and source coverage report.
+
+Players listed on current NFL rosters retain their team, including reserve and practice-squad membership when supplied. Players without a current team show `--` plus a sourced status such as Free agent, Retired or Unsigned. Missing roster membership alone does not establish retirement; unconfirmed statuses remain explicitly labelled.
+
+The 2026-10-06 snapshot has 1,583 rostered players, 851 explicit free agents, 104 explicitly inactive players, 17 confirmed retirements, four deceased players and ten unconfirmed statuses. An Inactive provider status is not treated as a retirement announcement. No explicit Unsigned result was returned in this snapshot; the collector supports it when reported.
+
+To refresh the current membership snapshot without repeating historical college/workout collection:
+
+```sh
+python -m pip install -r requirements.txt
+python prepare-source-cache.py
+python collect-current-teams.py
+python build-site.py
+python validate-current-teams.py
+python validate-profiles.py
+```
+
+The collector requires complete retrieval from all 32 NFL and ESPN rosters before publishing a replacement. Current membership is a source snapshot, so rerun this refresh when rosters change. Same-day cached reconstruction uses `python collect-current-teams.py --reuse-cache`. `validation/current-team-status-overrides.json` holds the reviewed primary retirement/deceased reports; live roster membership takes priority when players return. `validation/current-teams-validation.json` records the roster and identity checks. Raw responses remain outside Git; `python validate-current-teams.py --require-source-cache` reconciles every published result against the collected evidence.
+
 ## Measurement info and percentiles
 
 Each of the 14 measurement/drill fields has an info button with its definition, interpretation, positional average, median, middle 50%, sample size and player percentile when supported.
