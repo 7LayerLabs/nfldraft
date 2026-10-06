@@ -1,0 +1,128 @@
+{
+  "height": {
+    "label": "Height",
+    "definition": "The player's reported standing height, stored in inches.",
+    "unit": "in",
+    "direction": "size",
+    "interpretation": "A higher size percentile means taller, rather than better athletic performance.",
+    "sourceLabel": "NFL official combine measurements",
+    "sourceUrl": "https://www.nfl.com/news/gargantuan-ot-prospect-daniel-faalele-heavier-than-any-nfl-player-at-384-pounds"
+  },
+  "weight": {
+    "label": "Weight",
+    "definition": "The player's reported body weight in pounds at that observation.",
+    "unit": "lb",
+    "direction": "size",
+    "interpretation": "A higher size percentile means heavier. Weight can change between events.",
+    "sourceLabel": "NFL official combine measurements",
+    "sourceUrl": "https://www.nfl.com/news/gargantuan-ot-prospect-daniel-faalele-heavier-than-any-nfl-player-at-384-pounds"
+  },
+  "handSize": {
+    "label": "Hand size",
+    "definition": "The spread-hand span between the ends of the thumb and little finger.",
+    "unit": "in",
+    "direction": "size",
+    "interpretation": "A higher size percentile means a larger hand span, not a grip-strength score.",
+    "sourceLabel": "Green Bay Packers: how combine hand size is measured",
+    "sourceUrl": "https://www.packers.com/news/inbox-he-s-a-really-interesting-dude"
+  },
+  "armLength": {
+    "label": "Arm length",
+    "definition": "The testing source's reported length of one arm, distinct from total wingspan.",
+    "unit": "in",
+    "direction": "size",
+    "interpretation": "A higher size percentile means longer reported arms. This is a size measurement.",
+    "sourceLabel": "NFL official combine measurements",
+    "sourceUrl": "https://www.nfl.com/news/gargantuan-ot-prospect-daniel-faalele-heavier-than-any-nfl-player-at-384-pounds"
+  },
+  "wingspan": {
+    "label": "Wingspan",
+    "definition": "The distance between fingertips when both arms extend out to the sides.",
+    "unit": "in",
+    "direction": "size",
+    "interpretation": "A higher size percentile means a wider overall reach across both arms.",
+    "sourceLabel": "NFL: fingertip-to-fingertip wingspan measurement",
+    "sourceUrl": "https://www.nfl.com/news/jadeveon-clowney-s-wingspan-among-longest-in-dl-group-0ap2000000327796"
+  },
+  "fortyYardDash": {
+    "label": "40-yard dash",
+    "definition": "The elapsed time for a straight-line 40-yard sprint.",
+    "unit": "s",
+    "direction": "lower",
+    "interpretation": "A lower time means faster completion of this sprint.",
+    "sourceLabel": "NFL combine drill explainer",
+    "sourceUrl": "https://www.nfl.com/news/what-does-the-combine-data-mean-depends-on-your-position-09000d5d80ecd9a3"
+  },
+  "tenYardSplit": {
+    "label": "10-yard split",
+    "definition": "The elapsed time to reach 10 yards during the 40-yard sprint.",
+    "unit": "s",
+    "direction": "lower",
+    "interpretation": "A lower time means faster completion of the opening segment.",
+    "sourceLabel": "NFL combine drill explainer",
+    "sourceUrl": "https://www.nfl.com/news/what-does-the-combine-data-mean-depends-on-your-position-09000d5d80ecd9a3"
+  },
+  "twentyYardSplit": {
+    "label": "20-yard split",
+    "definition": "The elapsed time from the start to 20 yards during the 40-yard sprint.",
+    "unit": "s",
+    "direction": "lower",
+    "interpretation": "This is cumulative through 20 yards, not the second 10-yard segment.",
+    "sourceLabel": "NFL combine drill explainer",
+    "sourceUrl": "https://www.nfl.com/news/what-does-the-combine-data-mean-depends-on-your-position-09000d5d80ecd9a3"
+  },
+  "threeConeDrill": {
+    "label": "3-cone drill",
+    "definition": "The time for the prescribed turning course around three cones arranged five yards apart in an L.",
+    "unit": "s",
+    "direction": "lower",
+    "interpretation": "A lower time means faster completion of this change-of-direction course.",
+    "sourceLabel": "NFL combine drill explainer",
+    "sourceUrl": "https://www.nfl.com/news/what-does-the-combine-data-mean-depends-on-your-position-09000d5d80ecd9a3"
+  },
+  "twentyYardShuttle": {
+    "label": "20-yard shuttle",
+    "definition": "Time for a 5-yard run, a 10-yard reversal, then 5 yards back to the start.",
+    "unit": "s",
+    "direction": "lower",
+    "interpretation": "Also called the short shuttle or 5-10-5; lower times mean faster completion.",
+    "sourceLabel": "NFL combine drill explainer",
+    "sourceUrl": "https://www.nfl.com/news/what-does-the-combine-data-mean-depends-on-your-position-09000d5d80ecd9a3"
+  },
+  "sixtyYardShuttle": {
+    "label": "60-yard shuttle",
+    "definition": "Time for 5-, 10-, and 15-yard runs, returning to the start after each.",
+    "unit": "s",
+    "direction": "lower",
+    "interpretation": "Also called the long shuttle; lower times mean faster completion.",
+    "sourceLabel": "NFL combine drill explainer",
+    "sourceUrl": "https://www.nfl.com/news/what-does-the-combine-data-mean-depends-on-your-position-09000d5d80ecd9a3"
+  },
+  "verticalJump": {
+    "label": "Vertical jump",
+    "definition": "Jumping reach minus standing reach, measured after a jump from a stationary start.",
+    "unit": "in",
+    "direction": "higher",
+    "interpretation": "A higher result means greater measured vertical jump height.",
+    "sourceLabel": "NFL: how the vertical jump is measured",
+    "sourceUrl": "https://www.nfl.com/news/how-to-master-the-vertical-jump-0ap2000000326880"
+  },
+  "broadJump": {
+    "label": "Broad jump",
+    "definition": "The horizontal distance covered by a jump from a standing start.",
+    "unit": "in",
+    "direction": "higher",
+    "interpretation": "A higher result means greater measured horizontal jump distance.",
+    "sourceLabel": "NFL combine drill explainer",
+    "sourceUrl": "https://www.nfl.com/news/what-does-the-combine-data-mean-depends-on-your-position-09000d5d80ecd9a3"
+  },
+  "benchPress": {
+    "label": "Bench press",
+    "definition": "The number of completed bench-press repetitions with 225 pounds.",
+    "unit": "reps",
+    "direction": "higher",
+    "interpretation": "A higher result means more completed repetitions at the same test weight.",
+    "sourceLabel": "NFL: Scouting Combine tests and 225-pound bench press",
+    "sourceUrl": "https://www.nfl.com/news/what-is-the-nfl-scouting-combine-0ap3000001018273"
+  }
+}

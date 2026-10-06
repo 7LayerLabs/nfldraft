@@ -1,0 +1,590 @@
+{
+  "2017-10": {
+    "publishedWorkouts": [
+      {
+        "event": "Private workout · New York Jets",
+        "date": "2017-04-02",
+        "status": "Reported completed",
+        "summary": "Jets workout reported completed; numerical test results were not published.",
+        "sourceLabel": "NFL.com · Chase Goodbread",
+        "sourceUrl": "https://www.nfl.com/news/mahomes-to-work-out-for-bills-reportedly-works-out-for-jets-0ap3000000797024",
+        "metrics": []
+      }
+    ]
+  },
+  "2025-1": {
+    "publishedWorkouts": [
+      {
+        "event": "Miami pro day",
+        "date": "2025-03-24",
+        "status": "Completed",
+        "summary": "Throwing workout observed by Titans coaches and front-office staff; no timed drill results in this report.",
+        "sourceLabel": "Tennessee Titans · Jim Wyatt",
+        "sourceUrl": "https://www.tennesseetitans.com/news/qb-cam-ward-makes-his-case-to-the-titans-at-miami-s-pro-day",
+        "metrics": []
+      },
+      {
+        "event": "Private workout · Tennessee Titans",
+        "date": "2025-03-28",
+        "status": "Scheduled as of source publication",
+        "summary": "Titans announced a planned Florida workout. This article confirms the schedule, not completion or test results.",
+        "sourceLabel": "Tennessee Titans · Jim Wyatt",
+        "sourceUrl": "https://www.tennesseetitans.com/news/qb-cam-ward-makes-his-case-to-the-titans-at-miami-s-pro-day",
+        "metrics": []
+      }
+    ]
+  },
+  "2026-1": {
+    "publishedWorkouts": [
+      {
+        "event": "Indiana pro day",
+        "date": "2026-04-01",
+        "status": "Completed",
+        "summary": "Reported throwing: 53/56 completed. Weight: 236 lb. No running drills.",
+        "sourceLabel": "NFL.com · Eric Edholm",
+        "sourceUrl": "https://www.nfl.com/news/top-prospect-fernando-mendoza-shows-of-trademark-accuracy-at-indiana-pro-day",
+        "metrics": [
+          {
+            "key": "weight",
+            "label": "Weight",
+            "value": 236,
+            "unit": "lb",
+            "designation": "reported"
+          },
+          {
+            "key": "throwingCompletions",
+            "label": "Scripted throwing completions",
+            "value": 53,
+            "unit": "throws",
+            "designation": "reported"
+          },
+          {
+            "key": "throwingAttempts",
+            "label": "Scripted throwing attempts",
+            "value": 56,
+            "unit": "throws",
+            "designation": "reported"
+          }
+        ]
+      },
+      {
+        "event": "NFL Scouting Combine",
+        "date": "2026-02",
+        "status": "Retrospectively reported",
+        "summary": "Combine weight: 225 lb, reported in the subsequent pro-day article.",
+        "sourceLabel": "NFL.com · Eric Edholm",
+        "sourceUrl": "https://www.nfl.com/news/top-prospect-fernando-mendoza-shows-of-trademark-accuracy-at-indiana-pro-day",
+        "metrics": [
+          {
+            "key": "weight",
+            "label": "Combine weight",
+            "value": 225,
+            "unit": "lb",
+            "designation": "reported"
+          }
+        ]
+      }
+    ]
+  },
+  "2026-50": {
+    "publishedWorkouts": [
+      {
+        "event": "Indiana pro day",
+        "date": "2026-04-01",
+        "status": "Completed",
+        "summary": "40-yard dash: 4.31 sec, reported pro-day timing.",
+        "sourceLabel": "NFL.com · Eric Edholm",
+        "sourceUrl": "https://www.nfl.com/news/top-prospect-fernando-mendoza-shows-of-trademark-accuracy-at-indiana-pro-day",
+        "metrics": [
+          {
+            "key": "fortyYardDash",
+            "label": "40-yard dash",
+            "value": 4.31,
+            "unit": "s",
+            "designation": "reported"
+          }
+        ]
+      }
+    ]
+  },
+  "2021-5": {
+    "publishedWorkouts": [
+      {
+        "event": "LSU pro day",
+        "date": "2021-03-31",
+        "status": "Completed",
+        "summary": "40-yard dash: 4.38 sec; LSU explicitly labels the time unofficial.",
+        "sourceLabel": "LSU Athletics",
+        "sourceUrl": "https://lsusports.net/news/2021/03/31/jamarr-chase-runs-4-38u-40-yard-dash-lsu-pro-day",
+        "metrics": [
+          {
+            "key": "fortyYardDash",
+            "label": "40-yard dash",
+            "value": 4.38,
+            "unit": "s",
+            "designation": "UNOFFICIAL"
+          }
+        ]
+      }
+    ]
+  },
+  "2021-7": {
+    "publishedWorkouts": [
+      {
+        "event": "Oregon pro day",
+        "date": "2021-04-02",
+        "status": "Completed",
+        "summary": "331 lb, 76.875 in tall, 30 bench reps, 109 in broad jump. Scout-reported 40 timings ranged 5.09–5.13 sec.",
+        "sourceLabel": "Oregon Athletics · Rob Moseley",
+        "sourceUrl": "https://goducks.com/news/2021/4/2/football-ducks-spread-wings-at-pro-day",
+        "metrics": [
+          {
+            "key": "height",
+            "label": "Height",
+            "value": 76.875,
+            "unit": "in",
+            "designation": "reported"
+          },
+          {
+            "key": "weight",
+            "label": "Weight",
+            "value": 331,
+            "unit": "lb",
+            "designation": "reported"
+          },
+          {
+            "key": "benchPress",
+            "label": "Bench press (225 lb)",
+            "value": 30,
+            "unit": "reps",
+            "designation": "reported"
+          },
+          {
+            "key": "broadJump",
+            "label": "Broad jump",
+            "value": 109,
+            "unit": "in",
+            "designation": "reported"
+          },
+          {
+            "key": "fortyYardDash",
+            "label": "40-yard dash lower reported time",
+            "value": 5.09,
+            "unit": "s",
+            "designation": "scout-reported"
+          },
+          {
+            "key": "fortyYardDash",
+            "label": "40-yard dash upper reported time",
+            "value": 5.13,
+            "unit": "s",
+            "designation": "scout-reported"
+          }
+        ]
+      }
+    ]
+  },
+  "2021-215": {
+    "publishedWorkouts": [
+      {
+        "event": "Oregon pro day",
+        "date": "2021-04-02",
+        "status": "Completed",
+        "summary": "Vertical jump: 38 in.",
+        "sourceLabel": "Oregon Athletics · Rob Moseley",
+        "sourceUrl": "https://goducks.com/news/2021/4/2/football-ducks-spread-wings-at-pro-day",
+        "metrics": [
+          {
+            "key": "verticalJump",
+            "label": "Vertical jump",
+            "value": 38,
+            "unit": "in",
+            "designation": "reported"
+          }
+        ]
+      }
+    ]
+  },
+  "2021-36": {
+    "publishedWorkouts": [
+      {
+        "event": "Oregon pro day",
+        "date": "2021-04-02",
+        "status": "Completed",
+        "summary": "Broad jump: 126 in.",
+        "sourceLabel": "Oregon Athletics · Rob Moseley",
+        "sourceUrl": "https://goducks.com/news/2021/4/2/football-ducks-spread-wings-at-pro-day",
+        "metrics": [
+          {
+            "key": "broadJump",
+            "label": "Broad jump",
+            "value": 126,
+            "unit": "in",
+            "designation": "reported"
+          }
+        ]
+      }
+    ]
+  },
+  "2021-154": {
+    "publishedWorkouts": [
+      {
+        "event": "Duke pro day",
+        "date": "2021-03-29",
+        "status": "Completed",
+        "summary": "School-published pro-day measurements; timing method was not specified.",
+        "sourceLabel": "Duke Athletics",
+        "sourceUrl": "https://goduke.com/news/2021/3/29/football-duke-completes-2021-pro-day",
+        "metrics": [
+          {
+            "key": "height",
+            "label": "Height",
+            "value": 69.625,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "weight",
+            "label": "Weight",
+            "value": 184,
+            "unit": "lb",
+            "designation": "school-reported"
+          },
+          {
+            "key": "handSize",
+            "label": "Hand size",
+            "value": 9.625,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "armLength",
+            "label": "Arm length",
+            "value": 29.125,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "wingspan",
+            "label": "Wingspan",
+            "value": 72.75,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "benchPress",
+            "label": "Bench press",
+            "value": 13,
+            "unit": "reps",
+            "designation": "school-reported"
+          },
+          {
+            "key": "verticalJump",
+            "label": "Vertical jump",
+            "value": 35.5,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "fortyYardDash",
+            "label": "40-yard dash",
+            "value": 4.3,
+            "unit": "s",
+            "designation": "school-reported"
+          },
+          {
+            "key": "twentyYardShuttle",
+            "label": "Short shuttle",
+            "value": 4.44,
+            "unit": "s",
+            "designation": "school-reported"
+          },
+          {
+            "key": "threeConeDrill",
+            "label": "Three-cone drill",
+            "value": 6.81,
+            "unit": "s",
+            "designation": "school-reported"
+          }
+        ]
+      }
+    ]
+  },
+  "2021-210": {
+    "publishedWorkouts": [
+      {
+        "event": "Duke pro day",
+        "date": "2021-03-29",
+        "status": "Completed",
+        "summary": "School-published pro-day measurements; timing method was not specified.",
+        "sourceLabel": "Duke Athletics",
+        "sourceUrl": "https://goduke.com/news/2021/3/29/football-duke-completes-2021-pro-day",
+        "metrics": [
+          {
+            "key": "height",
+            "label": "Height",
+            "value": 73.5,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "weight",
+            "label": "Weight",
+            "value": 262,
+            "unit": "lb",
+            "designation": "school-reported"
+          },
+          {
+            "key": "handSize",
+            "label": "Hand size",
+            "value": 9.5,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "armLength",
+            "label": "Arm length",
+            "value": 33.125,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "wingspan",
+            "label": "Wingspan",
+            "value": 80.125,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "benchPress",
+            "label": "Bench press",
+            "value": 28,
+            "unit": "reps",
+            "designation": "school-reported"
+          },
+          {
+            "key": "verticalJump",
+            "label": "Vertical jump",
+            "value": 34.5,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "fortyYardDash",
+            "label": "40-yard dash",
+            "value": 4.78,
+            "unit": "s",
+            "designation": "school-reported"
+          },
+          {
+            "key": "twentyYardShuttle",
+            "label": "Short shuttle",
+            "value": 4.35,
+            "unit": "s",
+            "designation": "school-reported"
+          },
+          {
+            "key": "threeConeDrill",
+            "label": "Three-cone drill",
+            "value": 7.09,
+            "unit": "s",
+            "designation": "school-reported"
+          }
+        ]
+      }
+    ]
+  },
+  "2021-162": {
+    "publishedWorkouts": [
+      {
+        "event": "Duke pro day",
+        "date": "2021-03-29",
+        "status": "Completed",
+        "summary": "School-published pro-day measurements; timing method was not specified.",
+        "sourceLabel": "Duke Athletics",
+        "sourceUrl": "https://goduke.com/news/2021/3/29/football-duke-completes-2021-pro-day",
+        "metrics": [
+          {
+            "key": "height",
+            "label": "Height",
+            "value": 75,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "weight",
+            "label": "Weight",
+            "value": 240,
+            "unit": "lb",
+            "designation": "school-reported"
+          },
+          {
+            "key": "handSize",
+            "label": "Hand size",
+            "value": 9.25,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "armLength",
+            "label": "Arm length",
+            "value": 31.625,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "wingspan",
+            "label": "Wingspan",
+            "value": 78.25,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "benchPress",
+            "label": "Bench press",
+            "value": 15,
+            "unit": "reps",
+            "designation": "school-reported"
+          },
+          {
+            "key": "verticalJump",
+            "label": "Vertical jump",
+            "value": 35,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "fortyYardDash",
+            "label": "40-yard dash",
+            "value": 4.52,
+            "unit": "s",
+            "designation": "school-reported"
+          },
+          {
+            "key": "twentyYardShuttle",
+            "label": "Short shuttle",
+            "value": 4.3,
+            "unit": "s",
+            "designation": "school-reported"
+          },
+          {
+            "key": "threeConeDrill",
+            "label": "Three-cone drill",
+            "value": 6.72,
+            "unit": "s",
+            "designation": "school-reported"
+          }
+        ]
+      }
+    ]
+  },
+  "2021-118": {
+    "publishedWorkouts": [
+      {
+        "event": "Duke pro day",
+        "date": "2021-03-29",
+        "status": "Completed",
+        "summary": "School-published measurements; hamstring strain limited participation. Running and jump results were not published.",
+        "sourceLabel": "Duke Athletics",
+        "sourceUrl": "https://goduke.com/news/2021/3/29/football-duke-completes-2021-pro-day",
+        "metrics": [
+          {
+            "key": "height",
+            "label": "Height",
+            "value": 74.875,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "weight",
+            "label": "Weight",
+            "value": 244,
+            "unit": "lb",
+            "designation": "school-reported"
+          },
+          {
+            "key": "handSize",
+            "label": "Hand size",
+            "value": 9.25,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "armLength",
+            "label": "Arm length",
+            "value": 33.75,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "wingspan",
+            "label": "Wingspan",
+            "value": 80,
+            "unit": "in",
+            "designation": "school-reported"
+          },
+          {
+            "key": "benchPress",
+            "label": "Bench press",
+            "value": 18,
+            "unit": "reps",
+            "designation": "school-reported"
+          }
+        ]
+      }
+    ]
+  },
+  "2018-6": {
+    "careerSummary": "Notre Dame guard with 37 games and 36 starts. His 2017 season included 13 starts and 883 offensive snaps; the school reports zero sacks, one quarterback hit and three hurries allowed. Career: 2,474 snaps, three sacks and four quarterback hits allowed.",
+    "collegeSources": [
+      {
+        "label": "Notre Dame · Quenton Nelson final college biography",
+        "url": "https://storage.googleapis.com/fightingirish-com/2019/08/42673__m_footbl_2017_18_misc_non_event__Quenton_Nelson_Final_Bio.pdf"
+      }
+    ],
+    "collegeExperience": [
+      {
+        "year": 2014,
+        "games": 0,
+        "starts": 0,
+        "sourceUrl": "https://storage.googleapis.com/fightingirish-com/2019/08/42673__m_footbl_2017_18_misc_non_event__Quenton_Nelson_Final_Bio.pdf",
+        "sourceLabel": "Notre Dame college biography"
+      },
+      {
+        "year": 2015,
+        "games": 12,
+        "starts": 11,
+        "sourceUrl": "https://storage.googleapis.com/fightingirish-com/2019/08/42673__m_footbl_2017_18_misc_non_event__Quenton_Nelson_Final_Bio.pdf",
+        "sourceLabel": "Notre Dame college biography"
+      },
+      {
+        "year": 2016,
+        "games": 12,
+        "starts": 12,
+        "sourceUrl": "https://storage.googleapis.com/fightingirish-com/2019/08/42673__m_footbl_2017_18_misc_non_event__Quenton_Nelson_Final_Bio.pdf",
+        "sourceLabel": "Notre Dame college biography"
+      },
+      {
+        "year": 2017,
+        "games": 13,
+        "starts": 13,
+        "snaps": 883,
+        "sacksAllowed": 0,
+        "hitsAllowed": 1,
+        "hurriesAllowed": 3,
+        "sourceUrl": "https://storage.googleapis.com/fightingirish-com/2019/08/42673__m_footbl_2017_18_misc_non_event__Quenton_Nelson_Final_Bio.pdf",
+        "sourceLabel": "Notre Dame college biography"
+      },
+      {
+        "year": "Career",
+        "games": 37,
+        "starts": 36,
+        "snaps": 2474,
+        "sacksAllowed": 3,
+        "hitsAllowed": 4,
+        "sourceUrl": "https://storage.googleapis.com/fightingirish-com/2019/08/42673__m_footbl_2017_18_misc_non_event__Quenton_Nelson_Final_Bio.pdf",
+        "sourceLabel": "Notre Dame college biography"
+      }
+    ]
+  }
+}

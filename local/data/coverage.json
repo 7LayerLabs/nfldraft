@@ -1,0 +1,120 @@
+{
+  "collectedAt": "2026-10-06T02:09:35.031164+00:00",
+  "counts": {
+    "profiles": 2569,
+    "measurements": 2569,
+    "scouting": 2527,
+    "collegeStatistics": 2118,
+    "collegeExperience": 953,
+    "publishedWorkoutReports": 12
+  },
+  "years": {
+    "2017": {
+      "profiles": 253,
+      "measurements": 253,
+      "scouting": 228,
+      "collegeStatistics": 219,
+      "collegeExperience": 7,
+      "publishedWorkoutReports": 1
+    },
+    "2018": {
+      "profiles": 256,
+      "measurements": 256,
+      "scouting": 240,
+      "collegeStatistics": 217,
+      "collegeExperience": 28
+    },
+    "2019": {
+      "profiles": 254,
+      "measurements": 254,
+      "scouting": 253,
+      "collegeStatistics": 213,
+      "collegeExperience": 43
+    },
+    "2020": {
+      "profiles": 255,
+      "measurements": 255,
+      "scouting": 255,
+      "collegeStatistics": 207,
+      "collegeExperience": 42
+    },
+    "2021": {
+      "profiles": 259,
+      "measurements": 259,
+      "scouting": 259,
+      "collegeStatistics": 211,
+      "publishedWorkoutReports": 8,
+      "collegeExperience": 33
+    },
+    "2022": {
+      "profiles": 262,
+      "measurements": 262,
+      "scouting": 262,
+      "collegeStatistics": 213,
+      "collegeExperience": 37
+    },
+    "2023": {
+      "profiles": 259,
+      "measurements": 259,
+      "scouting": 259,
+      "collegeStatistics": 216,
+      "collegeExperience": 32
+    },
+    "2024": {
+      "profiles": 257,
+      "measurements": 257,
+      "scouting": 257,
+      "collegeStatistics": 201,
+      "collegeExperience": 248
+    },
+    "2025": {
+      "profiles": 257,
+      "measurements": 257,
+      "scouting": 257,
+      "collegeStatistics": 215,
+      "collegeExperience": 240,
+      "publishedWorkoutReports": 1
+    },
+    "2026": {
+      "profiles": 257,
+      "measurements": 257,
+      "scouting": 257,
+      "collegeStatistics": 206,
+      "collegeExperience": 243,
+      "publishedWorkoutReports": 2
+    }
+  },
+  "metrics": {
+    "height": 2569,
+    "weight": 2569,
+    "handSize": 2399,
+    "armLength": 2399,
+    "fortyYardDash": 2053,
+    "tenYardSplit": 1534,
+    "verticalJump": 1909,
+    "broadJump": 1885,
+    "benchPress": 1418,
+    "wingspan": 2283,
+    "twentyYardShuttle": 1458,
+    "threeConeDrill": 1362,
+    "sixtyYardShuttle": 106,
+    "throwingCompletions": 1,
+    "throwingAttempts": 1,
+    "twentyYardSplit": 20
+  },
+  "collegeStatuses": {
+    "available": 2057,
+    "experience-only": 447,
+    "available-biography": 54,
+    "available-school": 7,
+    "not-applicable": 4
+  },
+  "notes": [
+    "Every drafted player has an addressable profile. Source coverage differs by player.",
+    "Combine and pro-day observations retain source, event, units and timing designation.",
+    "Mixed-source event types stay unspecified. There was no in-person 2021 combine.",
+    "College figures come from ESPN college records and separately attributed draft-era college biographies. Biography-only tables are partial.",
+    "Private-workout measurements are displayed only when publicly reported. Missing results are never zero.",
+    "Scouting excerpts are short pre-draft source quotations; grades from different years are not normalized."
+  ]
+}

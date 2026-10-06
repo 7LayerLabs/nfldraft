@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+server*.log
+server.pid
+*-preview.png
+redesign-desktop.png
+draft-history-template.html
+nfl-draft-history.html
+site-script-check.js
+*.verify-backup
+.agent-reach/
+raw/
