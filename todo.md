@@ -134,3 +134,8 @@ Enrich every one of the 2,569 drafted players from 2017–2026. Each player open
 - [x] Rebuild localhost and verify all ten years' ordered options and 2026 guard filtering (17 guards); retain additional positions after the requested sequence.
 - [x] Push the update to GitHub and verify the remote commit.
 - Review: G is the visible guard option and retains the original OG data match; no draft records or profile positions were changed. Browser checks passed for every year, including years with no drafted fullback.
+
+### Tackle label and outside-linebacker order
+- [x] Change dropdown label OT to T and place OLB directly after LB, retaining the underlying position values for filtering.
+- [x] Rebuild localhost, verify T/OLB filtering and order, and push to GitHub.
+- Review: 2026 dropdown shows T and LB followed immediately by OLB; T returned 22 tackles and OLB returned five outside linebackers. Underlying source positions remain intact.
